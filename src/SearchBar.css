@@ -15,3 +15,15 @@ input[type="text"]{
     color: white;
     border: 1px solid black;
 }
+
+.block:hover { 
+    background-color: rgb(255, 238, 0);
+    color: black;
+    border: 1px solid black;
+}
+
+.block:focus { 
+    background-color: rgb(255, 174, 0);
+    color: black;
+    border: 1px solid black;
+}

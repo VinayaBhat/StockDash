@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Heading.css';
 
-function Heading(){
+function Heading() {
     return (<div className="Title">
         <header>
             StockDash

@@ -1,16 +1,15 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-.Title{
-   text-align: center;
-   padding: 1%;
-   font-size: larger;
-   font-weight: bold;
-   background-color:  #b3e6ff;
+.Title {
+  text-align: center;
+  padding: 1%;
+  font-size: larger;
+  font-weight: bold;
+  background-color: #b3e6ff;
 }
 
-header{
-    font-size: larger;
+header {
+  font-size: larger;
 }
-

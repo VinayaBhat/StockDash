@@ -5,8 +5,8 @@ import SearchBar from './SearchBar'
 
 function App() {
   return (
-  <div><Heading/><SearchBar/></div>
-   
+    <div><Heading /><SearchBar /></div>
+
   );
 }
 
