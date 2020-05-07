@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+
+input[type="text"]{
+    margin-right: 1%;
+}
+.jumbotron{
+    padding: 1%;
+    background-color:  #b3e6ff;
+}
+
+.block { 
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
