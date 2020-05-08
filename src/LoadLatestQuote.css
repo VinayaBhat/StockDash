@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+.front,
+.back {
+  display: flex;
+  flex-wrap: wrap;
+  height: 40vh;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(238, 236, 142);
+  color: black;
+  text-align: center;
+  font-size: 10px;
+  border-radius: 25%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid gainsboro;
+  -moz-box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+}
+
+p {
+  font-size: 20px;
+}
+
+.flex-item {
+  width: 100%;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.button-front {
+  width: 20%;
+  border-radius: 5%;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  padding: 1%;
+}
+
+.table-css {
+  width: 80%;
+  height: 80%;
+  border: 1px solid gainsboro;
+  -moz-box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+}
+
+.cell {
+  border: 1px solid black;
+  font: larger;
+  font-weight: bold;
+}
+
+.row1 {
+  background-color: #d4e4f7;
+}
+
+.row1:hover {
+  background-color: gray;
+}
+
+.row2:hover {
+  background-color: gray;
+}
+
+.row2 {
+  background-color: #236ab9;
+}

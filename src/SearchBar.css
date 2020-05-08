@@ -27,3 +27,6 @@ input[type="text"]{
     color: black;
     border: 1px solid black;
 }
+.null_condition{
+    display: none;
+}
