@@ -8,8 +8,7 @@ class SearchBar extends Component {
 
     constructor(property) {
         super(property);
-        this.state = { value: [], latestQuote: null };
-        this.companyName = { value: "" };
+        this.state = { value: [], latestQuote: null,companyName:""};
         this.symbol = { value: "" };
         this.GetStock_MainFunction = this.GetStock_MainFunction.bind(this);
         this.newCompanyName = this.newCompanyName.bind(this);
@@ -33,8 +32,8 @@ class SearchBar extends Component {
 
     GetStock_MainFunction(event) {
         event.preventDefault();
-        if (this.companyName.value !== undefined) {
-            this.GetSymbol(this.companyName.value);
+        if (this.state.companyName !== undefined) {
+            this.GetSymbol(this.state.companyName);
             Promise.all([
                 loadLatestQuote(this.symbol.value),
                 getCompanyProfile(this.symbol.value),
@@ -46,7 +45,7 @@ class SearchBar extends Component {
     }
 
     newCompanyName(event) {
-        this.companyName = { value: event.target.value };
+        this.setState({companyName: event.target.value});
     }
 
     async componentDidMount() {
@@ -73,7 +72,7 @@ class SearchBar extends Component {
                                     className="form-control"
                                     placeholder="Enter the organization name"
                                     aria-label="Company Name"
-                                    value="facebook"
+                                    //value="facebook"
                                     onChange={this.newCompanyName}
                                 />
                                 <span className="input-group-btn">

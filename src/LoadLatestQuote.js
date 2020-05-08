@@ -47,6 +47,7 @@ const LoadLatestQuote = ({
                         </tr>
                     </tbody>
                 </Table>
+                <button className="flex-item button-back" onClick={handleClick}>Back</button>
             </div>
         </ReactCardFlip>
     )
