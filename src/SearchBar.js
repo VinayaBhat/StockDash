@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
-import { loadLatestQuote, getCompanyProfile } from "./RestApiCalls";
+import { loadLatestQuote, getCompanyProfile, logo } from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
+import LoadLogo from "./LoadLogo";
+
 
 class SearchBar extends Component {
 
     constructor(property) {
         super(property);
-        this.state = { value: [], latestQuote: null,companyName:""};
+        this.state = { value: [], latestQuote: null,companyName:"", logo_img:null};
         this.symbol = { value: "" };
         this.GetStock_MainFunction = this.GetStock_MainFunction.bind(this);
         this.newCompanyName = this.newCompanyName.bind(this);
@@ -37,9 +39,11 @@ class SearchBar extends Component {
             Promise.all([
                 loadLatestQuote(this.symbol.value),
                 getCompanyProfile(this.symbol.value),
+                logo(this.symbol.value)
             ]).then((values) => {
                 let quote_data = values[0];
                 this.setState({ latestQuote: constructLatestQuote(quote_data) });
+                this.setState({logo_img:values[2]})
             });
         }
     }
@@ -87,6 +91,7 @@ class SearchBar extends Component {
                         </div>
                     </div>
                 </div>
+                {this.state.logo_img==null ?<div className="null_condition"></div>:<LoadLogo{...this.state.logo_img}/>}
                 {this.state.latestQuote == null ? <div className="null_condition"></div> : <LoadLatestQuote{...this.state.latestQuote} />}
             </div>
         );
