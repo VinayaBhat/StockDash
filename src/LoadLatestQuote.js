@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactCardFlip from "react-card-flip";
 import './LoadLatestQuote.css'
 import { Table } from 'react-bootstrap'
+import { logo } from './RestApiCalls';
 
 
 const LoadLatestQuote = ({
@@ -9,7 +10,8 @@ const LoadLatestQuote = ({
     high,
     low,
     close,
-    volume
+    volume,
+    logo_img
 }) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
@@ -19,8 +21,9 @@ const LoadLatestQuote = ({
     return (
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
             <div className="front">
-                <p className="flex-item">Latest Quote of the Organization</p>
-                <button className="flex-item button-front" onClick={handleClick}>Show</button>
+                <div className="flex-item"> <p>Latest Quote of the Organization</p></div>
+                <div className="flex-item"><img src={logo_img['url']}></img></div>
+                <div className="flex-item"><button className="button-front" onClick={handleClick}>Show</button></div>
             </div>
             <div className="back">
                 <Table bsPrefix="table-css" size="sm">
@@ -47,7 +50,9 @@ const LoadLatestQuote = ({
                         </tr>
                     </tbody>
                 </Table>
-                <button className="flex-item button-back" onClick={handleClick}>Back</button>
+                <div className="flex-item-back">
+                    <button className="button-back" onClick={handleClick}>Back</button>
+                </div>
             </div>
         </ReactCardFlip>
     )
