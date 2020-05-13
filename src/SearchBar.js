@@ -33,7 +33,12 @@ class SearchBar extends Component {
 
     GetStock_MainFunction(event) {
         event.preventDefault();
-        if (this.state.companyName !== undefined) {
+        if (this.state.companyName === undefined || this.state.companyName.length===0) {
+            this.setState({ latestQuote: null});
+                this.setState({ logo_img: null});              
+                this.setState({ quote: null });
+                this.setState({companyprofile:null});
+        }else{
             this.GetSymbol(this.state.companyName);
             Promise.all([
                 loadLatestQuote(this.symbol.value),

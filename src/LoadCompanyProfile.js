@@ -38,7 +38,7 @@ const LoadCompanyProfile = ({
             <div className="back-profile" onClick={handleClick}>
                 <Container fluid>
                     <Row className="profile-pic">
-                        <Col><img src={image}></img></Col>
+                        <Col><img src={image} alt="company logo"></img></Col>
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={3}>Company Name: </Col>
