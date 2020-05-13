@@ -30,3 +30,8 @@ input[type="text"]{
 .null_condition{
     display: none;
 }
+
+.block_latestquote{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}

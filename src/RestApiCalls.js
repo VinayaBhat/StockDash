@@ -13,3 +13,4 @@ export const loadLatestQuote = symbol => {
   export const logo = symbol => {
     return fetch("https://cloud.iexapis.com/v1/stock/"+symbol+"/logo?token=pk_7f40fdc95e4c46268d90695ab47e7b22").then(res => res.json());
   };
+  

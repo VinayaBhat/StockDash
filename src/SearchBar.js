@@ -3,19 +3,19 @@ import "./SearchBar.css";
 import { loadLatestQuote, getCompanyProfile, logo } from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
+import LoadCompanyProfile from "./LoadCompanyProfile";
 
 
 class SearchBar extends Component {
 
     constructor(property) {
         super(property);
-        this.state = { value: [], latestQuote: null, companyName: "", logo_img: null, quote: null };
+        this.state = { value: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile:null};
         this.symbol = { value: "" };
         this.GetStock_MainFunction = this.GetStock_MainFunction.bind(this);
         this.newCompanyName = this.newCompanyName.bind(this);
 
     }
-
 
     GetSymbol(companyName) {
         for (var i = 0; i < this.state.value.length; i++) {
@@ -42,9 +42,10 @@ class SearchBar extends Component {
             ]).then((values) => {
                 let quote_data = values[0];
                 this.setState({ latestQuote: constructLatestQuote(quote_data) });
-                this.setState({ logo_img: values[2] })
+                this.setState({ logo_img: values[2] });              
                 let quote_temp = { ...this.state.latestQuote, logo_img: this.state.logo_img };
                 this.setState({ quote: quote_temp });
+                this.setState({companyprofile:values[1]['profile']});
             });
         }
     }
@@ -92,7 +93,12 @@ class SearchBar extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="block_latestquote">
                 {this.state.quote == null ? <div className="null_condition"></div> : <LoadLatestQuote{...this.state.quote} />}
+                </div>
+                <div className="block_latestquote">
+                {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
+                </div>
             </div>
         );
     }

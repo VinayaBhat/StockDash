@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactCardFlip from "react-card-flip";
 import './LoadLatestQuote.css'
 import { Table } from 'react-bootstrap'
-import { logo } from './RestApiCalls';
 
 
 const LoadLatestQuote = ({
@@ -19,30 +18,30 @@ const LoadLatestQuote = ({
         setIsFlipped(!isFlipped);
     };
     return (
-        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-            <div className="front">
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+            <div className="front" onClick={handleClick}>
                 <div className="flex-item"> <p>Latest Quote of the Organization</p></div>
-                <div className="flex-item"><img src={logo_img['url']}></img></div>
+                <div className="flex-item"><img src={logo_img['url']} alt="company logo"></img></div>
                 <div className="flex-item"><button className="button-front" onClick={handleClick}>Show</button></div>
             </div>
-            <div className="back">
+            <div className="back" onClick={handleClick}>
                 <Table bsPrefix="table-css" size="sm">
                     <tbody>
                         <tr className="row1">
                             <td className="cell">Open</td>
-                            <td className="cell">${open}</td>
+                            <td className="cell open">$ {open}</td>
                         </tr>
                         <tr className="row2">
                             <td className="cell">High</td>
-                            <td className="cell">${high}</td>
+                            <td className="cell high">$ {high}</td>
                         </tr>
                         <tr className="row1">
                             <td className="cell">Low</td>
-                            <td className="cell">${low}</td>
+                            <td className="cell low">$ {low}</td>
                         </tr>
                         <tr className="row2">
                             <td className="cell">Close</td>
-                            <td className="cell">${close}</td>
+                            <td className="cell closing">$ {close}</td>
                         </tr>
                         <tr className="row1">
                             <td className="cell">Volume</td>
