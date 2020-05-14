@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import ReactCardFlip from "react-card-flip";
 import './LoadCompanyProfile.css'
-import {Row,Col,Container} from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 
-
+//Loading the company profile
 const LoadCompanyProfile = ({
     beta,
     ceo,
@@ -23,11 +23,13 @@ const LoadCompanyProfile = ({
     volAvg,
     website
 }) => {
-    let percent=changesPercentage.replace(/[()]/g,'');
-    percent=percent.replace('%','');
-    
-    const [isFlipped, setIsFlipped] = useState(false);  
-   
+    //Convert changesPercent given as (-0.11%) to -0.11
+    let percent = changesPercentage.replace(/[()]/g, '');
+    percent = percent.replace('%', '');
+
+    //State to flip the React Card
+    const [isFlipped, setIsFlipped] = useState(false);
+
     const handleClick = () => {
         setIsFlipped(!isFlipped);
     };
@@ -54,7 +56,7 @@ const LoadCompanyProfile = ({
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Sector: </Col>
                         <Col className="profile-content" xs={12} sm={9}>{sector}</Col>
-                    </Row>     
+                    </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>CEO: </Col>
                         <Col className="profile-content" xs={12} sm={9}>{ceo}</Col>
@@ -77,16 +79,16 @@ const LoadCompanyProfile = ({
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Changes: </Col>
-                        <Col className="profile-content changepercent" style={{color: changes<0?"red":"green"}} xs={12} sm={9}>{changes}</Col>
+                        <Col className="profile-content changepercent" style={{ color: changes < 0 ? "red" : "green" }} xs={12} sm={9}>{changes}</Col>
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Changes Percentage: </Col>
-                        <Col className="profile-content" style={{color: (parseFloat(percent)<0)?"red":"green"}} xs={12} sm={9}>{changesPercentage}</Col>
+                        <Col className="profile-content" style={{ color: (parseFloat(percent) < 0) ? "red" : "green" }} xs={12} sm={9}>{changesPercentage}</Col>
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Beta: </Col>
                         <Col className="profile-content" xs={12} sm={9}>{beta}</Col>
-                    </Row>                   
+                    </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Market Capitalization: </Col>
                         <Col className="profile-content" xs={12} sm={9}>{mktCap}</Col>
@@ -98,7 +100,7 @@ const LoadCompanyProfile = ({
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Average Volume: </Col>
                         <Col className="profile-content" xs={12} sm={9}>{volAvg}</Col>
-                    </Row>                      
+                    </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Website: </Col>
                         <Col className="profile-content" xs={12} sm={9}><a href={website} rel="noopener noreferrer" target="_blank">{website}</a></Col>

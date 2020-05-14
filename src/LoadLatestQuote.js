@@ -3,7 +3,7 @@ import ReactCardFlip from "react-card-flip";
 import './LoadLatestQuote.css'
 import { Table } from 'react-bootstrap'
 
-
+//Loading the latest quote of the origanization
 const LoadLatestQuote = ({
     open,
     high,
@@ -12,6 +12,7 @@ const LoadLatestQuote = ({
     volume,
     logo_img
 }) => {
+    //Used to set the state of the React Card
     const [isFlipped, setIsFlipped] = useState(false);
 
     const handleClick = () => {
