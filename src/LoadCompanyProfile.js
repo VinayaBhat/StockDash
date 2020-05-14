@@ -24,7 +24,8 @@ const LoadCompanyProfile = ({
     website
 }) => {
     let percent=changesPercentage.replace(/[()]/g,'');
-    const intpercent=parseInt(percent, 10); 
+    percent=percent.replace('%','');
+    
     const [isFlipped, setIsFlipped] = useState(false);  
    
     const handleClick = () => {
@@ -80,7 +81,7 @@ const LoadCompanyProfile = ({
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Changes Percentage: </Col>
-                        <Col className="profile-content" style={{color: (Math.sign(intpercent)===-1|| Math.sign(intpercent)===-0) ?"red":"green"}} xs={12} sm={9}>{changesPercentage}</Col>
+                        <Col className="profile-content" style={{color: (parseFloat(percent)<0)?"red":"green"}} xs={12} sm={9}>{changesPercentage}</Col>
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Beta: </Col>
