@@ -134,7 +134,7 @@ class SearchBar extends Component {
         return (
             <div>
                 <div className="AutoComplete">
-                    <input value={text} onChange={this.onTextChanged} type="text" />
+                    <input value={text} placeholder="Enter name of organization" onChange={this.onTextChanged} type="text" />
                     {this.renderSuggestion()}
                 </div>
                 <div className="block_latestquote">
