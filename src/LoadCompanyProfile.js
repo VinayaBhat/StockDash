@@ -24,11 +24,13 @@ const LoadCompanyProfile = ({
     website
 }) => {
     let percent=changesPercentage.replace(/[()]/g,'');
-    const intpercent=parseInt(percent, 10);   
-    const [isFlipped, setIsFlipped] = useState(false);    
+    const intpercent=parseInt(percent, 10); 
+    const [isFlipped, setIsFlipped] = useState(false);  
+   
     const handleClick = () => {
         setIsFlipped(!isFlipped);
     };
+
     return (
         <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
             <div className="front-profile" onClick={handleClick}>
@@ -78,7 +80,7 @@ const LoadCompanyProfile = ({
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={3}>Changes Percentage: </Col>
-                        <Col className="profile-content" style={{color: Math.sign(intpercent)===-1?"red":"green"}} >{changesPercentage}</Col>
+                        <Col className="profile-content" style={{color: (Math.sign(intpercent)===-1|| Math.sign(intpercent)===-0) ?"red":"green"}} >{changesPercentage}</Col>
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={3}>Beta: </Col>
@@ -98,7 +100,7 @@ const LoadCompanyProfile = ({
                     </Row>                      
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={3}>Website: </Col>
-                        <Col className="profile-content"><a href={website}>{website}</a></Col>
+                        <Col className="profile-content"><a href={website} rel="noopener noreferrer" target="_blank">{website}</a></Col>
                     </Row>
                 </Container>
                 <button className="button-back-profile" onClick={handleClick}>Back</button>
