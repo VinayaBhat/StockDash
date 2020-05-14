@@ -1,21 +1,23 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
-import { loadLatestQuote, getCompanyProfile, logo } from "./RestApiCalls";
+import { loadLatestQuote, getCompanyProfile, logo,symbols_company,sector_perf } from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
 import LoadCompanyProfile from "./LoadCompanyProfile";
+import SectorPerformance from "./SectorPerformance";
 
 
 class SearchBar extends Component {
 
     constructor(property) {
         super(property);
-        this.state = { suggestions: [], text: '', companyNamesFromJSON: [], value: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile: null };
+        this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data:null };
         this.symbol = { value: "" };
         this.GetStock_MainFunction = this.GetStock_MainFunction.bind(this);
         this.onTextChanged = this.onTextChanged.bind(this);
         this.renderSuggestion = this.renderSuggestion.bind(this);
         this.suggestionsSelected = this.suggestionsSelected.bind(this);
+        this.getCompanyNames=this.getCompanyNames.bind(this);
 
     }
 
@@ -53,13 +55,13 @@ class SearchBar extends Component {
     }
 
     GetSymbol(companyName) {
-        for (var i = 0; i < this.state.value.length; i++) {
+        for (var i = 0; i < this.state.company_symbol_json.length; i++) {
             if (
-                this.state.value[i].name
+                this.state.company_symbol_json[i].name
                     .toLowerCase()
                     .includes(companyName.toLowerCase())
             ) {
-                this.symbol.value = this.state.value[i].symbol;
+                this.symbol.value = this.state.company_symbol_json[i].symbol;
                 return;
             }
         }
@@ -89,26 +91,42 @@ class SearchBar extends Component {
         }
     }
 
+    getCompanyNames(){        
+        var data = []
+        for (var i = 0; i < this.state.company_symbol_json.length; i++) {
+            if (this.state.company_symbol_json[i].name.length !== 0) {
+                data.push(this.state.company_symbol_json[i].name);
+            }
+        }
+        this.setState({ companyNamesFromJSON: data });
+    }
 
 
     async componentDidMount() {
-        try {
-            const response = await fetch(
-                "https://api.iextrading.com/1.0/ref-data/symbols"
-            );
-            const json = await response.json();
-            this.setState({ value: json });
-            var data = []
-            for (var i = 0; i < this.state.value.length; i++) {
-                if (this.state.value[i].name.length !== 0) {
-                    data.push(this.state.value[i].name);
-                }
-            }
-            this.setState({ companyNamesFromJSON: data });
-
-        } catch (error) {
-            console.log(error);
-        }
+        Promise.all([
+           symbols_company(),
+           sector_perf()
+        ]).then((values) => {
+            this.setState({ company_symbol_json: values[0]},this.getCompanyNames);
+            let data_temp={}
+            data_temp={basicMaterials:values[1]['sectorPerformance'][0].changesPercentage,
+                CommunicationServices:values[1]['sectorPerformance'][1].changesPercentage,
+                Conglomerates:values[1]['sectorPerformance'][2].changesPercentage,
+                ConsumerCyclical:values[1]['sectorPerformance'][3].changesPercentage,
+                ConsumerDefensive:values[1]['sectorPerformance'][4].changesPercentage,
+                Energy:values[1]['sectorPerformance'][5].changesPercentage,
+                Financial:values[1]['sectorPerformance'][6].changesPercentage,
+                FinancialServices:values[1]['sectorPerformance'][7].changesPercentage,
+                Healthcare:values[1]['sectorPerformance'][8].changesPercentage,
+                IndustrialGoods:values[1]['sectorPerformance'][9].changesPercentage,
+                Industrials:values[1]['sectorPerformance'][10].changesPercentage,
+                RealEstate:values[1]['sectorPerformance'][11].changesPercentage,
+                Services:values[1]['sectorPerformance'][12].changesPercentage,
+                Technology:values[1]['sectorPerformance'][13].changesPercentage,
+                Utilities:values[1]['sectorPerformance'][14].changesPercentage
+            }         
+            this.setState({sector_data:data_temp});
+        });           
     }
 
     render() {
@@ -120,7 +138,7 @@ class SearchBar extends Component {
                     {this.renderSuggestion()}
                 </div>
                 <div className="block_latestquote">
-                    {this.state.quote == null ? <div className="null_condition"></div> : <LoadLatestQuote{...this.state.quote} />}
+                    {this.state.quote == null ?(this.state.sector_data==null? <div className="null_condition"></div> : <SectorPerformance{...this.state.sector_data}/>): <LoadLatestQuote{...this.state.quote} />}
                 </div>
                 <div className="block_latestquote">
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
