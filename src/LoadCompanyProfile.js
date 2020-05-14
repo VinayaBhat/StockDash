@@ -43,64 +43,64 @@ const LoadCompanyProfile = ({
                         <Col><img src={image} alt="company logo"></img></Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Company Name: </Col>
-                        <Col className="profile-content">{companyName}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Company Name: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{companyName}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Industry: </Col>
-                        <Col className="profile-content">{industry}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Industry: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{industry}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Sector: </Col>
-                        <Col className="profile-content">{sector}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Sector: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{sector}</Col>
                     </Row>     
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>CEO: </Col>
-                        <Col className="profile-content">{ceo}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>CEO: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{ceo}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Description: </Col>
-                        <Col className="profile-content description">{description}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Description: </Col>
+                        <Col className="profile-content description" xs={12} sm={9}>{description}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Price: </Col>
-                        <Col className="profile-content"> $ {price}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Price: </Col>
+                        <Col className="profile-content" xs={12} sm={9}> $ {price}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Range: </Col>
-                        <Col className="profile-content"> $ {range}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Range: </Col>
+                        <Col className="profile-content" xs={12} sm={9}> $ {range}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Exchange: </Col>
-                        <Col className="profile-content">{exchange}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Exchange: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{exchange}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Changes: </Col>
-                        <Col className="profile-content changepercent" style={{color: changes<0?"red":"green"}}>{changes}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Changes: </Col>
+                        <Col className="profile-content changepercent" style={{color: changes<0?"red":"green"}} xs={12} sm={9}>{changes}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Changes Percentage: </Col>
-                        <Col className="profile-content" style={{color: (Math.sign(intpercent)===-1|| Math.sign(intpercent)===-0) ?"red":"green"}} >{changesPercentage}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Changes Percentage: </Col>
+                        <Col className="profile-content" style={{color: (Math.sign(intpercent)===-1|| Math.sign(intpercent)===-0) ?"red":"green"}} xs={12} sm={9}>{changesPercentage}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Beta: </Col>
-                        <Col className="profile-content">{beta}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Beta: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{beta}</Col>
                     </Row>                   
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Market Capitalization: </Col>
-                        <Col className="profile-content">{mktCap}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Market Capitalization: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{mktCap}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Latest Dividend: </Col>
-                        <Col className="profile-content">{lastDiv}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Latest Dividend: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{lastDiv}</Col>
                     </Row>
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Average Volume: </Col>
-                        <Col className="profile-content">{volAvg}</Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Average Volume: </Col>
+                        <Col className="profile-content" xs={12} sm={9}>{volAvg}</Col>
                     </Row>                      
                     <Row className="row-profile">
-                        <Col className="profile-heading" xs={3}>Website: </Col>
-                        <Col className="profile-content"><a href={website} rel="noopener noreferrer" target="_blank">{website}</a></Col>
+                        <Col className="profile-heading" xs={12} sm={3}>Website: </Col>
+                        <Col className="profile-content" xs={12} sm={9}><a href={website} rel="noopener noreferrer" target="_blank">{website}</a></Col>
                     </Row>
                 </Container>
                 <button className="button-back-profile" onClick={handleClick}>Back</button>

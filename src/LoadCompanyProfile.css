@@ -102,20 +102,65 @@
     inset 1px 2px 0px rgba(255, 255, 255, 0.4);
 }
 
-.profile-pic {
+img{
   height: auto;
-  width: 100%;
-  margin: 1%;
+  max-width: 100%; 
+  display:block; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile-content {
   padding: 1%;
   background-color: gainsboro;
-  font-size: 0.7rem;
+  font-size: 100%;
   font-weight: bold;
 }
 
 .description {
   text-align: justify;
   text-justify: inter-word;
+}
+
+
+@media screen and (max-width: 414px) {
+
+  .profile-heading,.profile-content{
+    font-size: 100%;
+  }
+  .button-front-profile {
+    margin: 2%;
+    width: 60%;
+    background-color: black;
+    color: white;
+    padding: 2%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .button-back-profile {
+    margin: 2%;
+    width: 60%;
+    background-color: black;
+    color: white;
+    padding: 1%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .flex-item-profile {
+    width: 100%;
+    height: 20%;
+    font-size: 100%;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 2%;
+  }
+
+  a{
+    font-size: 80%;
+  }
+  
+  
 }

@@ -30,13 +30,17 @@
 }
 
 .front > .flex-item > img {
-  height: min-content;
-  width: min-content;
+  height: auto;
+  max-width: 100%; 
+  display:block; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .front > .flex-item > p {
   font-size: 1.5rem;
 }
+
 
 .flex-item {
   width: 100%;
@@ -121,4 +125,32 @@
 
 .low{
   color: red;
+}
+
+@media screen and (max-width: 414px) {
+  .front > .flex-item > p {
+    font-size: 90%;
+  }
+
+  .front > .flex-item > button {
+    width: 60%;
+    background-color: black;
+    color: white;
+    padding: 1%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  
+  .button-back {
+    width: 60%;
+    background-color: black;
+    color: white;
+    padding: 1%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
 }
