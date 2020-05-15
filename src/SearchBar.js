@@ -5,6 +5,7 @@ import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
 import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
+import StockChartBar from "./StockChartBar";
 
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
@@ -149,6 +150,9 @@ class SearchBar extends Component {
                 </div>
                 <div className="block_latestquote">
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
+                </div>
+                <div>
+                    <StockChartBar />
                 </div>
             </div>
         );

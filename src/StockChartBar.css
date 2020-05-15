@@ -1,0 +1,14 @@
+.main-div
+{
+    background-color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+
+.daterangePicker
+{
+    display: flex;
+    justify-content: flex-end;
+    
+}
