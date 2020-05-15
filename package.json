@@ -10,6 +10,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-card-flip": "^1.0.10",
+    "react-chartjs-2": "^2.9.0",
     "react-dates": "^21.8.0",
     "react-dom": "^16.13.1",
     "react-flippy": "^0.1.5",
