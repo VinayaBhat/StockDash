@@ -24,3 +24,11 @@ export const sector_perf = () => {
 export const symbols_company = () => {
   return fetch("https://api.iextrading.com/1.0/ref-data/symbols").then(res => res.json());
 };
+
+export const getHourlyPrice = symbol => {
+  return fetch("https://financialmodelingprep.com/api/v3/historical-chart/1hour/"+symbol).then(res=>res.json());
+};
+
+export const getFullHistoricalData = symbol => {
+  return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/"+symbol).then(res=>res.json());
+};
