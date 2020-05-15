@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import "./SectorPerformance.css"
+import { Bar } from 'react-chartjs-2';
 
 //Sector Performance component to show the Daily Performance of different Sectors
 const SectorPerformance = ({
@@ -20,6 +21,39 @@ const SectorPerformance = ({
     Technology,
     Utilities
 }) => {
+    const chart_data = {
+        labels: ['Basic Materials', 'Communication Services', 'Conglomerates',
+            'Consumer Cyclical', 'Consumer Defensive', 'Energy', 'Financial', 'Financial Services', 'Healthcare',
+            'Industrial Goods', 'Industrials', 'Real Estate', 'Services', 'Technology', 'Utilities'],
+        datasets: [
+            {
+                label: 'Sectors',
+                backgroundColor: function (context) {
+                    var index = context.dataIndex;
+                    var value = context.dataset.data[index];
+                    return value < 0 ? 'red' :
+                        'limegreen';
+                },
+                borderColor: 'rgba(0,0,0,1)',
+                borderWidth: 1,
+                data: [parseFloat(basicMaterials),
+                parseFloat(CommunicationServices),
+                parseFloat(Conglomerates),
+                parseFloat(ConsumerCyclical),
+                parseFloat(ConsumerDefensive),
+                parseFloat(Energy),
+                parseFloat(Financial),
+                parseFloat(FinancialServices),
+                parseFloat(Healthcare),
+                parseFloat(IndustrialGoods),
+                parseFloat(Industrials),
+                parseFloat(RealEstate),
+                parseFloat(Services),
+                parseFloat(Technology),
+                parseFloat(Utilities)]
+            }
+        ]
+    }
 
     function checkSign(value) {
         var num = value.replace('%', '');
@@ -33,6 +67,32 @@ const SectorPerformance = ({
         <Container className="sector_container">
             <Row className="sector_row_heading">
                 <Col xs={12}> Daily Performance of Sectors:</Col>
+            </Row>
+            <Row>
+                <Col xs={12} className="chart">
+                    <Bar
+                        data={chart_data}
+                        options={{
+                            legend: {
+                                display: false,
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "black",
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "black",
+                                    }
+                                }]
+                            }
+
+                        }
+                        }
+                    />
+                </Col>
             </Row>
             <Row className="sector_row">
                 <Col className="sector_heading" xs={12} sm={6}>Basic Materials: </Col>
