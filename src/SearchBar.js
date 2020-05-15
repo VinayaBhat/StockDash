@@ -55,9 +55,9 @@ class SearchBar extends Component {
             return null;
         }
         var i = 0;
-        return (<ul>
-            {suggestions.map((item) => <li key={i++} onClick={() => this.suggestionsSelected(item)}>{item}</li>)}
-        </ul>)
+        return (<section role="list" className="list-wrapper">
+            {suggestions.map((item) => <div role="listitem" className="list-item" key={i++} onClick={() => this.suggestionsSelected(item)}>{item}</div>)}
+            </section>)
     }
 
     //Given the company name, find the symbol to use in subsequent requests
@@ -144,15 +144,15 @@ class SearchBar extends Component {
     render() {
         const { text } = this.state;
         return (
-            <div>
-                <div className="AutoComplete">
-                    <input value={text} placeholder="Enter name of organization" onChange={this.onCompanyNameChange} type="text" />
+            <div role="main">
+                <div className="AutoComplete" role="search">
+                    <input value={text} placeholder="Enter name of organization" onChange={this.onCompanyNameChange} type="text" aria-label="Select company name" />
                     {this.calculateSuggestions()}
                 </div>
-                <div className="block_latestquote">
-                    {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition"></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
+                <div className="block_latestquote" role="contentinfo">
+                    {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition" ></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
                 </div>
-                <div className="block_latestquote">
+                <div className="block_latestquote"  role="contentinfo">
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
                 </div>
                 <div>

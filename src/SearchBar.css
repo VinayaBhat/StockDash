@@ -18,7 +18,7 @@ input[type="text"] {
   margin-left: auto;
 }
 
-.AutoComplete > ul {
+.AutoComplete > .list-wrapper {
   list-style-type: none;
   width: 60%;
   border: 1px solid rgba(158, 157, 157, 0.75);
@@ -29,12 +29,12 @@ input[type="text"] {
   box-shadow: 5px 5px 5px 0px rgba(158, 157, 157, 0.75);
 }
 
-.AutoComplete > ul > li {
+.AutoComplete > .list-wrapper > .list-item {
   margin: 0;
   cursor: pointer;
 }
 
-.AutoComplete > ul > li:hover {
+.AutoComplete > .list-wrapper > .list-item:hover {
   text-decoration: underline;
   color: blue;
 }
