@@ -36,26 +36,9 @@ input[type="text"] {
 
 .AutoComplete > .list-wrapper > .list-item:hover {
   text-decoration: underline;
-  color: blue;
+  color: #004FA3;
 }
 
-.block {
-  background-color: black;
-  color: white;
-  border: 1px solid black;
-}
-
-.block:hover {
-  background-color: rgb(255, 238, 0);
-  color: black;
-  border: 1px solid black;
-}
-
-.block:focus {
-  background-color: rgb(255, 174, 0);
-  color: black;
-  border: 1px solid black;
-}
 .null_condition {
   display: none;
 }
