@@ -14,22 +14,22 @@ class SearchBar extends Component {
         super(property);
         this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null };
         this.symbol = { value: "" };
-        this.GetStock_MainFunction = this.GetStock_MainFunction.bind(this);
-        this.onTextChanged = this.onTextChanged.bind(this);
-        this.renderSuggestion = this.renderSuggestion.bind(this);
+        this.getStock_MainFunction = this.getStock_MainFunction.bind(this);
+        this.onCompanyNameChange = this.onCompanyNameChange.bind(this);
+        this.calculateSuggestions = this.calculateSuggestions.bind(this);
         this.suggestionsSelected = this.suggestionsSelected.bind(this);
-        this.getCompanyNames = this.getCompanyNames.bind(this);
+        this.getCompanyNamesForSuggestion = this.getCompanyNamesForSuggestion.bind(this);
 
     }
 
     //On Detecting change in textbox value, populate the company name suggestions
     //If text is empty, reset the states.
-    onTextChanged = (e) => {
+    onCompanyNameChange = (e) => {
         const value = e.target.value;
         if (value.length === 0) {
             this.setState({ text: '' });
             this.setState({ suggestions: [] });
-            this.setState({ companyName: '' }, this.GetStock_MainFunction);
+            this.setState({ companyName: '' }, this.getStock_MainFunction);
         }
         let suggest = [];
         if (value.length > 0) {
@@ -44,11 +44,11 @@ class SearchBar extends Component {
     suggestionsSelected(value) {
         this.setState({ text: value });
         this.setState({ suggestions: [] });
-        this.setState({ companyName: value }, this.GetStock_MainFunction);
+        this.setState({ companyName: value }, this.getStock_MainFunction);
     }
 
     //Renders company name suggestions in a list
-    renderSuggestion() {
+    calculateSuggestions() {
         const { suggestions } = this.state;
         if (suggestions.length === 0) {
             return null;
@@ -60,7 +60,7 @@ class SearchBar extends Component {
     }
 
     //Given the company name, find the symbol to use in subsequent requests
-    GetSymbol(companyName) {
+    getSymbolFromCompanyName(companyName) {
         for (var i = 0; i < this.state.company_symbol_json.length; i++) {
             if (
                 this.state.company_symbol_json[i].name
@@ -74,14 +74,14 @@ class SearchBar extends Component {
     }
 
     //Main Function: Get response from all APIS: Latest Quote, Company Profile, Logo
-    GetStock_MainFunction() {
+    getStock_MainFunction() {
         if (this.state.companyName === undefined || this.state.companyName.length === 0) {
             this.setState({ latestQuote: null });
             this.setState({ logo_img: null });
             this.setState({ quote: null });
             this.setState({ companyprofile: null });
         } else {
-            this.GetSymbol(this.state.companyName);
+            this.getSymbolFromCompanyName(this.state.companyName);
             Promise.all([
                 loadLatestQuote(this.symbol.value),
                 getCompanyProfile(this.symbol.value),
@@ -98,7 +98,7 @@ class SearchBar extends Component {
     }
 
     //Populate all the company Names to use for suggestions later
-    getCompanyNames() {
+    getCompanyNamesForSuggestion() {
         var data = []
         for (var i = 0; i < this.state.company_symbol_json.length; i++) {
             if (this.state.company_symbol_json[i].name.length !== 0) {
@@ -114,7 +114,7 @@ class SearchBar extends Component {
             symbols_company(),
             sector_perf()
         ]).then((values) => {
-            this.setState({ company_symbol_json: values[0] }, this.getCompanyNames);
+            this.setState({ company_symbol_json: values[0] }, this.getCompanyNamesForSuggestion);
             let data_temp = {}
             data_temp = {
                 basicMaterials: values[1]['sectorPerformance'][0].changesPercentage,
@@ -142,8 +142,8 @@ class SearchBar extends Component {
         return (
             <div>
                 <div className="AutoComplete">
-                    <input value={text} placeholder="Enter name of organization" onChange={this.onTextChanged} type="text" />
-                    {this.renderSuggestion()}
+                    <input value={text} placeholder="Enter name of organization" onChange={this.onCompanyNameChange} type="text" />
+                    {this.calculateSuggestions()}
                 </div>
                 <div className="block_latestquote">
                     {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition"></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
