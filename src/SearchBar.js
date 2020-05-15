@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
-import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf } from "./RestApiCalls";
+import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData } from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
 import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
 import StockChartBar from "./StockChartBar";
-
+import LoadStockTable from "./LoadStockTable";
+ 
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
 
     constructor(property) {
         super(property);
-        this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null };
+        this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[] };
         this.symbol = { value: "" };
         this.GetStock_MainFunction = this.GetStock_MainFunction.bind(this);
         this.onTextChanged = this.onTextChanged.bind(this);
@@ -80,12 +81,14 @@ class SearchBar extends Component {
             this.setState({ logo_img: null });
             this.setState({ quote: null });
             this.setState({ companyprofile: null });
+            this.setState({stockPrice:null});
         } else {
             this.GetSymbol(this.state.companyName);
             Promise.all([
                 loadLatestQuote(this.symbol.value),
                 getCompanyProfile(this.symbol.value),
-                logo(this.symbol.value)
+                logo(this.symbol.value),
+                getFullHistoricalData(this.symbol.value)
             ]).then((values) => {
                 let quote_data = values[0];
                 this.setState({ latestQuote: constructLatestQuote(quote_data) });
@@ -93,6 +96,7 @@ class SearchBar extends Component {
                 let quote_temp = { ...this.state.latestQuote, logo_img: this.state.logo_img };
                 this.setState({ quote: quote_temp });
                 this.setState({ companyprofile: values[1]['profile'] });
+                this.setState({stockPrice:values[3]['historical']})
             });
         }
     }
@@ -152,7 +156,10 @@ class SearchBar extends Component {
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
                 </div>
                 <div>
-                    <StockChartBar />
+                     <StockChartBar />
+                </div>
+                <div>
+                {this.state.stockPrice == null ? <div className="null_condition"></div> : <LoadStockTable stockprice={this.state.stockPrice}/>}
                 </div>
             </div>
         );
