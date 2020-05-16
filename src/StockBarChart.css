@@ -1,0 +1,15 @@
+.chart_container {
+    background-color: rgb(238, 236, 142);
+    width: 60%;
+    text-align: center;
+    margin-top: 2%;
+    border-radius: 8px;
+    border: 1px solid gainsboro;
+    -moz-box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+      inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+    -webkit-box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+      inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
+      inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+    padding: 4%;
+  }

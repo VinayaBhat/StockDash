@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "mdbreact": "^4.26.0",
+    "plotly.js": "^1.54.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-card-flip": "^1.0.10",
@@ -16,6 +17,7 @@
     "react-flippy": "^0.1.5",
     "react-loading-animation": "^1.4.0",
     "react-native": "^0.62.2",
+    "react-plotly.js": "^2.4.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
