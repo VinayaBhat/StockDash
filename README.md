@@ -1,6 +1,6 @@
 # StockDash API
 
-## A React Stock Market API
+## A React Stock Market DashBoard Application
 
 This project displays the latest quote, company profile and the stocks of the organization.<br/>
 We can select the organization whose stocks price we want from a autocomplete textbox.
