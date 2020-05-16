@@ -1,4 +1,20 @@
-th, td { background: #fff; padding: 8px 16px; }
+td { 
+  padding: 8px 16px; 
+}
+
+tr{
+  background: white;
+}
+
+tr:hover
+{
+  background: lightgray;
+}
+
+th {
+  background: wheat; 
+  padding: 8px 16px; 
+}
 
 .table-container {
   overflow: auto;

@@ -159,7 +159,7 @@ class SearchBar extends Component {
                      <StockChartBar />
                 </div>
                 <div>
-                {this.state.stockPrice == null ? <div className="null_condition"></div> : <LoadStockTable stockprice={this.state.stockPrice}/>}
+                {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <LoadStockTable stockprice={this.state.stockPrice}/>}
                 </div>
             </div>
         );

@@ -19,10 +19,9 @@ class LoadStockTable extends Component{
                             </tr>
                     </thead>
                     <tbody>
-                    
                             {
                                 this.props.stockprice.map(item=>(
-                                <tr>
+                                <tr key={item.date}>
                                     <td className="cell">{item.date}</td>
                                     <td className="cell">{item.open}</td>
                                     <td className="cell">{item.high}</td>
