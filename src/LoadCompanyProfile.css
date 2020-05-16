@@ -78,7 +78,7 @@
 }
 .button-back-profile {
   margin: 2%;
-  width: 20%;
+  width: 30%;
   background-color: black;
   color: white;
   padding: 1%;
@@ -87,6 +87,31 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
+
+.button-front-profile:hover {
+  margin: 2%;
+  width: 30%;
+  background-color: #b3e6ff;
+  color: black;
+  padding: 2%;
+  border-radius: 10%;
+  font-size: 0.8rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.button-back-profile:hover {
+  margin: 2%;
+  width: 30%;
+  background-color: #b3e6ff;
+  color: black;
+  padding: 1%;
+  border-radius: 10%;
+  font-size: 0.8rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+
 .row-profile {
   margin: 1%;
 }
@@ -146,6 +171,29 @@ img {
     width: 60%;
     background-color: black;
     color: white;
+    padding: 1%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+
+  .button-front-profile:hover{
+    margin: 2%;
+    width: 60%;
+    background-color: #b3e6ff;;
+    color: black;
+    padding: 2%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  .button-back-profile:hover {
+    margin: 2%;
+    width: 60%;
+    background-color: #b3e6ff;;
+    color: black;
     padding: 1%;
     border-radius: 10%;
     font-size: 100%;

@@ -38,7 +38,7 @@ const LoadCompanyProfile = ({
         <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
             <div className="front-profile" onClick={handleClick}>
                 <div className="flex-item-profile">{companyName} Profile</div>
-                <button className="button-front-profile" onClick={handleClick}>Show</button>
+                <button className="button-front-profile" role="button" onClick={handleClick}>Show</button>
             </div>
             <div className="back-profile" onClick={handleClick}>
                 <Container fluid>
@@ -106,7 +106,7 @@ const LoadCompanyProfile = ({
                         <Col className="profile-content" xs={12} sm={9}><a href={website} rel="noopener noreferrer" target="_blank">{website}</a></Col>
                     </Row>
                 </Container>
-                <button className="button-back-profile" onClick={handleClick}>Back</button>
+                <button className="button-back-profile" role="button" onClick={handleClick}>Back</button>
             </div>
         </ReactCardFlip>
     )
