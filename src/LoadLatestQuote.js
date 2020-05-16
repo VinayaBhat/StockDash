@@ -23,35 +23,35 @@ const LoadLatestQuote = ({
             <div className="front" onClick={handleClick}>
                 <div className="flex-item"> <p>Latest Quote of the Organization</p></div>
                 <div className="flex-item"><img src={logo_img['url']} alt="company logo"></img></div>
-                <div className="flex-item"><button className="button-front" onClick={handleClick}>Show</button></div>
+                <div className="flex-item"><button className="button-front" role="button" onClick={handleClick}>Show</button></div>
             </div>
             <div className="back" onClick={handleClick}>
                 <Table bsPrefix="table-css" size="sm">
                     <tbody>
-                        <tr className="row1">
+                        <tr className="row11">
                             <td className="cell">Open</td>
                             <td className="cell open">$ {open}</td>
                         </tr>
-                        <tr className="row2">
+                        <tr className="row22">
                             <td className="cell">High</td>
                             <td className="cell high">$ {high}</td>
                         </tr>
-                        <tr className="row1">
+                        <tr className="row11">
                             <td className="cell">Low</td>
                             <td className="cell low">$ {low}</td>
                         </tr>
-                        <tr className="row2">
+                        <tr className="row22">
                             <td className="cell">Close</td>
                             <td className="cell closing">$ {close}</td>
                         </tr>
-                        <tr className="row1">
+                        <tr className="row11">
                             <td className="cell">Volume</td>
                             <td className="cell">{volume}</td>
                         </tr>
                     </tbody>
                 </Table>
                 <div className="flex-item-back">
-                    <button className="button-back" onClick={handleClick}>Back</button>
+                    <button className="button-back" role="button" onClick={handleClick}>Back</button>
                 </div>
             </div>
         </ReactCardFlip>

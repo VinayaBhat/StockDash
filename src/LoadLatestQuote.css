@@ -78,6 +78,28 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
+.front > .flex-item > button:hover {
+  width: 20%;
+  background-color: #b3e6ff;
+  color: black;
+  padding: 1%;
+  border-radius: 10%;
+  font-size: 0.8rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.button-back:hover {
+  width: 20%;
+  background-color:#b3e6ff;
+  color: black;
+  padding: 1%;
+  border-radius: 10%;
+  font-size: 0.7rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
 .table-css {
   width: 80%;
   height: 80%;
@@ -98,22 +120,6 @@
   padding: 3%;
 }
 
-.row1 {
-  background-color: #d4e4f7;
-}
-
-.row1:hover {
-  background-color: gray;
-}
-
-.row2:hover {
-  background-color: gray;
-}
-
-.row2 {
-  background-color: white;
-}
-
 .open {
   color: darkblue;
 }
@@ -127,7 +133,7 @@
 }
 
 .low {
-  color: red;
+  color: #AD0000;
 }
 
 @media screen and (max-width: 414px) {
@@ -150,6 +156,28 @@
     width: 60%;
     background-color: black;
     color: white;
+    padding: 1%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+
+  .front > .flex-item > button:hover{
+    width: 60%;
+    background-color: white;
+    color: black;
+    padding: 1%;
+    border-radius: 10%;
+    font-size: 100%;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+
+  .button-back:hover {
+    width: 60%;
+    background-color: white;
+    color: black;
     padding: 1%;
     border-radius: 10%;
     font-size: 100%;
