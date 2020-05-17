@@ -7,14 +7,14 @@ import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
 import StockChartBar from "./StockChartBar";
 import LoadStockTable from "./LoadStockTable";
-
+import StockCandleStickChart from "./StockCandleStickChart";
  
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
 
     constructor(property) {
         super(property);
-        this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[] };
+        this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[], series: [{data:[]}] };
         this.symbol = { value: "" };
         this.getStock_MainFunction = this.getStock_MainFunction.bind(this);
         this.onCompanyNameChange = this.onCompanyNameChange.bind(this);
@@ -98,6 +98,16 @@ class SearchBar extends Component {
                 this.setState({ quote: quote_temp });
                 this.setState({ companyprofile: values[1]['profile'] });
                 this.setState({stockPrice:values[3]['historical']})
+                var stockdata=[];
+                values[3]['historical'].map(item=>
+                    {
+                        var stockdataArr = [];
+                        stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+                        stockdata.push(stockdataArr);
+                    });
+                this.setState({ series: [{
+                    data: stockdata}]
+                })
             });
         }
     }
@@ -144,6 +154,7 @@ class SearchBar extends Component {
 
     render() {
         const { text } = this.state;
+     
         return (
             <div role="main">
                 <div className="AutoComplete" role="search">
@@ -157,7 +168,7 @@ class SearchBar extends Component {
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
                 </div>
                 <div>
-                    {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <StockChartBar stockprice={this.state.stockPrice}/>}
+                    {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <StockChartBar stockprice={this.state.stockPrice} s={this.state.series}/>}
                 </div>
                 <div>
                 {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <LoadStockTable stockprice={this.state.stockPrice}/>}

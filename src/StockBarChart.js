@@ -7,8 +7,6 @@ class StockBarChart extends Component
 {
   render() 
   {
-
-    // {console.log(this.props.sp)}
     var stockChartXValues=[];
     var stockChartYValues=[];
     

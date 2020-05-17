@@ -7,6 +7,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 import StockBarChart from "./StockBarChart";
 import StockLineChart from "./StockLineChart";
+import StockCandleStickChart from "./StockCandleStickChart";
 class StockChartBar extends Component
 {
   constructor(props) {
@@ -32,6 +33,7 @@ class StockChartBar extends Component
           <select className="dropDown" onChange={this.onSelectChange}>
             <option selected value="barChart">BarChart</option>
             <option value="lineChart">LineChart</option>
+            <option value="candleStickChart">CandleStickChart</option>
           </select>
         <DateRangePicker
           startDateId="startDate"
@@ -45,7 +47,25 @@ class StockChartBar extends Component
         </div>
       </div>
      <div>
-     {this.props.stockprice == null || this.props.stockprice.length==0 ? <div className="null_condition"></div> : (this.state.value=='barChart'? <StockBarChart sp={this.props.stockprice}/>:(this.state.value=='lineChart'? <StockLineChart sp={this.props.stockprice}/>:<div className="null_condition"></div>))}
+     {(() => {
+        if(this.props.stockprice==null || this.props.stockprice.length==0 )
+        {
+            return <div className="null_condition"></div>;
+        }
+        else if(this.state.value=='barChart')
+        {
+          return <StockBarChart sp={this.props.stockprice}/>;
+        }
+        else if(this.state.value=='lineChart')
+        {
+          return <StockLineChart sp={this.props.stockprice}/>;
+        }
+        else if(this.state.value=='candleStickChart')
+        {
+          return <StockCandleStickChart sd={this.props.s}/>
+        }
+      })()}
+     {/* {this.props.stockprice == null || this.props.stockprice.length==0 ? <div className="null_condition"></div> : (this.state.value=='barChart'? <StockBarChart sp={this.props.stockprice}/>:(this.state.value=='lineChart'? <StockLineChart sp={this.props.stockprice}/>:<div className="null_condition"></div>))} */}
    </div>
    </div>
     );
