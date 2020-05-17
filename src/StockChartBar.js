@@ -6,7 +6,7 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import { DateRangePicker } from 'react-dates';
 import StockBarChart from "./StockBarChart";
-
+import StockLineChart from "./StockLineChart";
 class StockChartBar extends Component
 {
   constructor(props) {
@@ -45,7 +45,7 @@ class StockChartBar extends Component
         </div>
       </div>
      <div>
-     {this.props.stockprice == null || this.props.stockprice.length==0 ? <div className="null_condition"></div> : (this.state.value=='barChart'? <StockBarChart sp={this.props.stockprice}/>:<div className="null_condition"></div>)}
+     {this.props.stockprice == null || this.props.stockprice.length==0 ? <div className="null_condition"></div> : (this.state.value=='barChart'? <StockBarChart sp={this.props.stockprice}/>:(this.state.value=='lineChart'? <StockLineChart sp={this.props.stockprice}/>:<div className="null_condition"></div>))}
    </div>
    </div>
     );

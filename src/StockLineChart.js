@@ -1,14 +1,12 @@
 import React,{Component} from 'react';
-import {Bar} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import "./StockBarChart.css"
 import { Row, Col, Container } from 'react-bootstrap';
 
-class StockBarChart extends Component 
+class StockLineChart extends Component 
 {
   render() 
   {
-
-    // {console.log(this.props.sp)}
     var stockChartXValues=[];
     var stockChartYValues=[];
     
@@ -23,8 +21,10 @@ class StockBarChart extends Component
         datasets: [
           {
             label: 'Closing Price',
+            fill: false,
+            lineTension: 0.5,
             backgroundColor:'rgba(54, 128, 45, 0.76)',
-            borderColor: 'rgba(0,0,0,0.7)',
+            borderColor: 'rgba(0,0,0,0.5)',
             borderWidth: 2,
             data: stockChartYValues
           }
@@ -35,7 +35,7 @@ class StockBarChart extends Component
         <Container className="chart_container">
           <Row>
                 <Col xs={12} className="chart">
-                    <Bar
+                    <Line
                     className="barChart"
                     data={state}
                     options={{
@@ -57,4 +57,4 @@ class StockBarChart extends Component
   }
 }
 
-export default StockBarChart;
+export default StockLineChart;
