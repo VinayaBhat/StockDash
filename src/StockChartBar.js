@@ -3,7 +3,7 @@ import "./StockChartBar.css";
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { getFiveDaysPrice} from "./RestApiCalls";
+import { getFiveDaysPrice,getOneMonthPrice} from "./RestApiCalls";
 import { DateRangePicker } from 'react-dates';
 import StockBarChart from "./StockBarChart";
 import StockLineChart from "./StockLineChart";
@@ -23,7 +23,6 @@ class StockChartBar extends Component
       series: [{data:[]}] 
     };
     this.onSelectChange=this.onSelectChange.bind(this)
-   
   }
 
   onSelectChange = (e) => {
@@ -48,6 +47,24 @@ class StockChartBar extends Component
     })
   }
 
+  changeforOneMonth = () => {
+    Promise.all([
+      getOneMonthPrice(this.props.symbol)
+    ]).then((values)=>{
+      this.setState({stockdata:values[0]});
+      var stock=[];
+      values[0].map(item=>
+          {
+              var stockdataArr = [];
+              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+              stock.push(stockdataArr);
+          });
+      this.setState({ series: [{
+          data: stock}]
+      })
+    })
+  }
+
   render() {
     return (
      <div className="mainContainer">
@@ -56,7 +73,8 @@ class StockChartBar extends Component
         <Button variant="1day" className="button">1 day</Button>
         <Button variant="5day" className="button" 
          onClick={this.changeforFiveDays}>5 day</Button>
-        <Button variant="1month" className="button">1 month</Button>
+        <Button variant="1month" className="button"
+         onClick={this.changeforOneMonth}>1 month</Button>
         <Button variant="6months" className="button">6 months</Button>
         <Button variant="ytd" className="button">YTD</Button>
         <Button variant="1year" className="button">1 year</Button>
