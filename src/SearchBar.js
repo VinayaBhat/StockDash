@@ -7,7 +7,7 @@ import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
 import StockChartBar from "./StockChartBar";
 import LoadStockTable from "./LoadStockTable";
-import StockBarChart from "./StockBarChart";
+
  
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
@@ -157,10 +157,7 @@ class SearchBar extends Component {
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
                 </div>
                 <div>
-                     <StockChartBar />
-                </div>
-                <div>
-                {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <StockBarChart stockprice={this.state.stockPrice}/>}
+                    {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <StockChartBar stockprice={this.state.stockPrice}/>}
                 </div>
                 <div>
                 {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <LoadStockTable stockprice={this.state.stockPrice}/>}

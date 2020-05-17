@@ -7,15 +7,17 @@ class StockBarChart extends Component
 {
   render() 
   {
+
+    // {console.log(this.props.sp)}
     var stockChartXValues=[];
     var stockChartYValues=[];
     
-    this.props.stockprice.map(item=>
+    this.props.sp.map(item=>
         {
             stockChartXValues.push(item.date);
             stockChartYValues.push(item.close);
         })
-
+       
     const state = {
         labels: stockChartXValues,
         datasets: [
@@ -49,7 +51,7 @@ class StockBarChart extends Component
                     }}
                     />
                 </Col>
-        </Row>
+            </Row>
        </Container>
       );
   }

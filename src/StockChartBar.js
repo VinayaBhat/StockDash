@@ -5,6 +5,7 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
 import { DateRangePicker } from 'react-dates';
+import StockBarChart from "./StockBarChart";
 
 class StockChartBar extends Component
 {
@@ -14,13 +15,24 @@ class StockChartBar extends Component
       startDate: null,
       endDate: null,
       focusedInput: null,
+      value:'barChart'
     };
+    this.onSelectChange=this.onSelectChange.bind(this)
+  }
+
+  onSelectChange = (e) => {
+    this.setState({value: e.target.value });
   }
 
   render() {
     return (
-      <div className="main-div">
-        <div className="daterangePicker">
+     <div className="mainContainer">
+      <div className="searchBar">
+        <div className="itemcontainer">
+          <select className="dropDown" onChange={this.onSelectChange}>
+            <option selected value="barChart">BarChart</option>
+            <option value="lineChart">LineChart</option>
+          </select>
         <DateRangePicker
           startDateId="startDate"
           endDateId="endDate"
@@ -32,6 +44,10 @@ class StockChartBar extends Component
         />
         </div>
       </div>
+     <div>
+     {this.props.stockprice == null || this.props.stockprice.length==0 ? <div className="null_condition"></div> : (this.state.value=='barChart'? <StockBarChart sp={this.props.stockprice}/>:<div className="null_condition"></div>)}
+   </div>
+   </div>
     );
   }
 }
