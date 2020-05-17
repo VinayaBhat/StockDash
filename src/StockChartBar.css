@@ -1,6 +1,6 @@
  .searchBar
  {
-    background-color: white;
+    background-color: rgb(238, 236, 142);
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -23,8 +23,10 @@
 
 .dropDown
 {
-    margin-right: 10%;
-    width: 10%;
+    margin-right: 3%;
+    width: 12%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
 }
 
 .mainContainer
@@ -37,8 +39,19 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+     
 }
 
 .null_condition {
     display: none;
+  }
+
+  .button
+  {
+    margin-right: 1.5%;
+    background-color: #b3e6ff;
+    font-size: 15px;
+    height: 50%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
   }

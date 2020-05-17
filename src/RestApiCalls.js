@@ -32,3 +32,7 @@ export const getHourlyPrice = symbol => {
 export const getFullHistoricalData = symbol => {
   return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/"+symbol).then(res=>res.json());
 };
+
+export const getFiveDaysPrice = symbol => {
+  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_7d0b4958ac3e4f09a55058e694cc48f1").then(res=>res.json());
+}
