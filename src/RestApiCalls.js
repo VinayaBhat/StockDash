@@ -40,3 +40,7 @@ export const getFiveDaysPrice = symbol => {
 export const getOneMonthPrice = symbol => {
   return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/1m?token=pk_7d0b4958ac3e4f09a55058e694cc48f1").then(res=>res.json());
 }
+
+export const getSixMonthsPrice = symbol => {
+  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/6m?token=pk_1cd7010654304d9da845c98f9e030ab8").then(res=>res.json());
+}

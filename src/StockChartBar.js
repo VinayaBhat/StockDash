@@ -3,7 +3,7 @@ import "./StockChartBar.css";
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { getFiveDaysPrice,getOneMonthPrice} from "./RestApiCalls";
+import { getFiveDaysPrice,getOneMonthPrice,getSixMonthsPrice,getYTDPrice} from "./RestApiCalls";
 import { DateRangePicker } from 'react-dates';
 import StockBarChart from "./StockBarChart";
 import StockLineChart from "./StockLineChart";
@@ -18,7 +18,7 @@ class StockChartBar extends Component
       startDate: null,
       endDate: null,
       focusedInput: null,
-      value:'barChart',
+      value:'lineChart',
       stockdata:[],
       series: [{data:[]}] 
     };
@@ -30,12 +30,9 @@ class StockChartBar extends Component
   }
 
   changeforFiveDays = () => {
-    Promise.all([
-      getFiveDaysPrice(this.props.symbol)
-    ]).then((values)=>{
-      this.setState({stockdata:values[0]});
-      var stock=[];
-      values[0].map(item=>
+    this.setState({stockdata:this.props.fiveDayPrice});
+    var stock=[];
+    this.props.fiveDayPrice.map(item=>
           {
               var stockdataArr = [];
               stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
@@ -44,16 +41,12 @@ class StockChartBar extends Component
       this.setState({ series: [{
           data: stock}]
       })
-    })
   }
 
   changeforOneMonth = () => {
-    Promise.all([
-      getOneMonthPrice(this.props.symbol)
-    ]).then((values)=>{
-      this.setState({stockdata:values[0]});
-      var stock=[];
-      values[0].map(item=>
+    this.setState({stockdata:this.props.oneMonthPrice});
+    var stock=[];
+    this.props.oneMonthPrice.map(item=>
           {
               var stockdataArr = [];
               stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
@@ -62,9 +55,82 @@ class StockChartBar extends Component
       this.setState({ series: [{
           data: stock}]
       })
-    })
   }
 
+  changeforSixMonths = () => {
+    this.setState({stockdata:this.props.sixMonthsPrice});
+    var stock=[];
+    this.props.sixMonthsPrice.map(item=>
+          {
+              var stockdataArr = [];
+              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+              stock.push(stockdataArr);
+          });
+      this.setState({ series: [{
+          data: stock}]
+      })
+  }
+
+  changeforYTD = () => {
+    var sdate = new Date(new Date().getFullYear(), 0, 1);
+    console.log(sdate);
+    var ytddata=this.props.stockprice.filter(function(obj){
+      var temp = new Date(obj.date); 
+      return temp>=sdate;
+    }); 
+    this.setState({stockdata:ytddata});
+    var stock=[];
+    ytddata.map(item=>
+          {
+              var stockdataArr = [];
+              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+              stock.push(stockdataArr);
+          });
+      this.setState({ series: [{
+          data: stock}]
+      })
+  }
+
+  changeforOneYear = () =>{
+    var sdate = new Date();
+    sdate.setFullYear(sdate.getFullYear()-1);
+    var oneyeardata=this.props.stockprice.filter(function(obj){
+      var temp = new Date(obj.date); 
+      return temp>=sdate;
+    }); 
+    this.setState({stockdata:oneyeardata});
+    var stock=[];
+    oneyeardata.map(item=>
+          {
+              var stockdataArr = [];
+              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+              stock.push(stockdataArr);
+          });
+      this.setState({ series: [{
+          data: stock}]
+      })
+  }
+
+  chageforTwoYear = () =>{
+   var sdate = new Date();
+    sdate.setFullYear(sdate.getFullYear()-2);
+    var twoyeardata=this.props.stockprice.filter(function(obj){
+      var temp = new Date(obj.date); 
+      return temp>=sdate;
+    }); 
+    this.setState({stockdata:twoyeardata});
+    var stock=[];
+    twoyeardata.map(item=>
+          {
+              var stockdataArr = [];
+              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+              stock.push(stockdataArr);
+          });
+      this.setState({ series: [{
+          data: stock}]
+      })
+  }
+ 
   render() {
     return (
      <div className="mainContainer">
@@ -72,17 +138,21 @@ class StockChartBar extends Component
         <div className="itemcontainer">
         <Button variant="1day" className="button">1 day</Button>
         <Button variant="5day" className="button" 
-         onClick={this.changeforFiveDays}>5 day</Button>
+         onClick={this.test}>5 day</Button>
         <Button variant="1month" className="button"
          onClick={this.changeforOneMonth}>1 month</Button>
-        <Button variant="6months" className="button">6 months</Button>
-        <Button variant="ytd" className="button">YTD</Button>
-        <Button variant="1year" className="button">1 year</Button>
-        <Button variant="2years" className="button">2 years</Button>
+        <Button variant="6months" className="button"
+         onClick={this.changeforSixMonths}>6 months</Button>
+        <Button variant="ytd" className="button"
+        onClick={this.changeforYTD}>YTD</Button>
+        <Button variant="1year" className="button"
+        onClick={this.changeforOneYear}>1 year</Button>
+        <Button variant="2years" className="button"
+        onClick={this.chageforTwoYear}>2 years</Button>
           <select className="dropDown" onChange={this.onSelectChange}>
-            <option selected value="barChart">BarChart</option>
-            <option value="lineChart">LineChart</option>
+            <option selected value="lineChart">LineChart</option>
             <option value="candleStickChart">CandleStickChart</option>
+            <option value="barChart">BarChart</option>
           </select>
         <DateRangePicker
           startDateId="startDate"
