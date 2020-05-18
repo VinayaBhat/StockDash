@@ -5,7 +5,6 @@
     flex-direction: column;
     background-color: rgb(238, 236, 142);
     width: 50%;
-    text-align: center;
     margin-left: auto;
     margin-right: auto;
     border-radius: 8px;
@@ -16,28 +15,28 @@
       inset 1px 2px 0px rgba(255, 255, 255, 0.4);
     box-shadow: 0px 1px 1px rgba(000, 000, 000, 0.5),
       inset 1px 2px 0px rgba(255, 255, 255, 0.4);
-    padding: 2%;
+    padding: 21;
     margin-top: 4%;
     margin-bottom: 4%;
   }
   
   .section {
     margin: 10px;
-    background: lightsalmon;
+    background: lightgoldenrodyellow;
     flex-grow: 1;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    /* for Firefox */
     min-height: 0;
   }
 
   .header
   {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     padding-top: 1%;
     padding-bottom: 1%;
+    text-align: center;
   }
   
   .newscontent {
@@ -49,8 +48,38 @@
     background: white;
     flex-grow: 1;
     overflow: auto;
-    /* for Firefox */
     min-height: 0;
   }
   
-   
+  .content
+  {
+      text-align: left;
+      margin-left: 1%;
+  } 
+
+  .headline
+  {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 1%;
+    font-family: sans-serif;
+    text-decoration: underline;
+  }
+
+  .null
+  {
+      display: none;
+  }
+
+  .summary
+  {
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+
+  .dateSource
+  {
+    margin-top: 0;  
+    font-family: sans-serif;
+    font-size: 15px;
+  }

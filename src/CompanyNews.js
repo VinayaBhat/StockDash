@@ -3,27 +3,6 @@ import "./CompanyNews.css";
 
 class CompanyNews extends Component
 {
-    // getnews()
-    // {
-    //     var getnews=[];
-    //     this.props.news.map(item=>{
-    //         getnews.push(item);
-    //     })
-    //     var results=document.getElementById("newsContent");
-        
-    //     for(let i=0;i<getnews.length-1;i++)
-    //     {
-    //         var p = document.createElement('p');
-    //         p.innerHTML = getnews[i].headline;
-    //         var p1 = document.createElement('p');
-    //         p1.innerHTML = getnews[i].summary;
-    //         var hr = document.createElement('hr');
-    //         results.appendChild(p);
-    //         results.appendChild(p1);
-    //         results.appendChild(hr);
-    //     }
-    // }
-
     render() 
     { 
         return (
@@ -34,12 +13,27 @@ class CompanyNews extends Component
                 </header>
                 <div  className="scrollable-content newscontent" id="newsContent">
                 {
-                                this.props.news.map(item=>(
-                                    <div key={item.date}>
-                                
-                                        <p>{item.headline}</p>
-                                        <p>{item.summary}</p>
-                                </div>))
+                                this.props.news.map(item=>
+                                    (
+                                        ((item.datetime==null || item.source==null || item.headline==null)?
+                                                <div className="null"></div>:
+                                            (item.summary==null?
+                                                (<div key={item.date} className="content">
+                                                    <h2 className="headline">{item.headline}</h2>
+                                                    <p className="summary">{item.source}&nbsp;{", "+(new Date(item.datetime).getFullYear()+"-"+new Date(item.datetime).getMonth()+"-"+new Date(item.datetime).getDate())}
+                                                    <br/>
+                                                    {"No summary available"}</p>
+                                                    <hr/>
+                                                </div>):
+                                                (<div key={item.date} className="content">
+                                                    <h2 className="headline">{item.headline}</h2>
+                                                    <p className="summary">{item.source}&nbsp;{", "+(new Date(item.datetime).getFullYear()+"-"+new Date(item.datetime).getMonth()+"-"+new Date(item.datetime).getDate())}
+                                                    <br/>{item.summary}</p>
+                                                    <hr/>
+                                                </div>)
+                                        )
+                                    )
+                                    ))
                             }
                 </div>
                 </div>
