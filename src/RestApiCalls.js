@@ -25,22 +25,14 @@ export const symbols_company = () => {
   return fetch("https://api.iextrading.com/1.0/ref-data/symbols").then(res => res.json());
 };
 
-export const getHourlyPrice = symbol => {
-  return fetch("https://financialmodelingprep.com/api/v3/historical-chart/1hour/"+symbol).then(res=>res.json());
-};
+// export const getHourlyPrice = symbol => {
+//   return fetch("https://financialmodelingprep.com/api/v3/historical-chart/1hour/"+symbol).then(res=>res.json());
+// };
 
 export const getFullHistoricalData = symbol => {
   return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/"+symbol).then(res=>res.json());
 };
 
 export const getFiveDaysPrice = symbol => {
-  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_7d0b4958ac3e4f09a55058e694cc48f1").then(res=>res.json());
-}
- 
-export const getOneMonthPrice = symbol => {
-  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/1m?token=pk_7d0b4958ac3e4f09a55058e694cc48f1").then(res=>res.json());
-}
-
-export const getSixMonthsPrice = symbol => {
-  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/6m?token=pk_1cd7010654304d9da845c98f9e030ab8").then(res=>res.json());
+  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_1cd7010654304d9da845c98f9e030ab8").then(res=>res.json());
 }

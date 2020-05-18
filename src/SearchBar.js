@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
-import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData,getFiveDaysPrice,getOneMonthPrice,getSixMonthsPrice,getYTDPrice} from "./RestApiCalls";
+import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData,getHourlyPrice,getFiveDaysPrice} from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
 import LoadCompanyProfile from "./LoadCompanyProfile";
@@ -15,7 +15,7 @@ class SearchBar extends Component {
         super(property);
         this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, 
         companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[], series: [{data:[]}],
-        fiveDayPrice:[],oneMonthPrice:[],sixMonthsPrice:[]
+        hourlyPrice:[],fiveDayPrice:[],oneMonthPrice:[],sixMonthsPrice:[]
     };
         this.symbol = { value: "" };
         this.getStock_MainFunction = this.getStock_MainFunction.bind(this);
@@ -84,6 +84,7 @@ class SearchBar extends Component {
             this.setState({ quote: null });
             this.setState({ companyprofile: null });
             this.setState({stockPrice:null}); 
+            this.setState({hourlyPrice:null});
             this.setState({fiveDayPrice:null});
             this.setState({oneMonthPrice:null});
             this.setState({sixMonthsPrice:null});
@@ -94,9 +95,7 @@ class SearchBar extends Component {
                 getCompanyProfile(this.symbol.value),
                 logo(this.symbol.value),
                 getFullHistoricalData(this.symbol.value),
-                getFiveDaysPrice(this.symbol.value),
-                getOneMonthPrice(this.symbol.value),
-                getSixMonthsPrice(this.symbol.value)
+                getFiveDaysPrice(this.symbol.value)
             ]).then((values) => {
                 let quote_data = values[0];
                 this.setState({ latestQuote: constructLatestQuote(quote_data) });
@@ -104,12 +103,18 @@ class SearchBar extends Component {
                 let quote_temp = { ...this.state.latestQuote, logo_img: this.state.logo_img };
                 this.setState({quote: quote_temp });
                 this.setState({companyprofile: values[1]['profile'] });
-                this.setState({stockPrice:values[3]['historical']})
+                this.setState({stockPrice:values[3]['historical']});
                 this.setState({fiveDayPrice:values[4]});
-                this.setState({oneMonthPrice:values[5]});
-                this.setState({sixMonthsPrice:values[6]});
+                var date = new Date();
+                var startdate = new Date(date.setMonth(date.getMonth()-1));
+                var oneMonthdata=values[3]['historical'].filter(function(obj){
+                var temp = new Date(obj.date); 
+                return temp>=startdate;
+                }); 
+                this.setState({oneMonthPrice:oneMonthdata});
+                this.setState({sixMonthsPrice:values[7]});
                 var stockdata=[];
-                values[3]['historical'].map(item=>
+                oneMonthdata.map(item=>
                     {
                         var stockdataArr = [];
                         stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
@@ -164,7 +169,7 @@ class SearchBar extends Component {
 
     render() {
         const { text } = this.state;
-     
+        
         return (
             <div role="main">
                 <div className="AutoComplete" role="search">
@@ -179,7 +184,7 @@ class SearchBar extends Component {
                 </div>
                 <div>
                     {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : 
-                    <StockChartBar stockprice={this.state.stockPrice} series={this.state.series} symbol={this.symbol.value} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice} sixMonthsPrice={this.state.sixMonthsPrice}/>}
+                    <StockChartBar stockprice={this.state.stockPrice} series={this.state.series} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
                 </div>
                 <div>
                 {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <LoadStockTable stockprice={this.state.stockPrice}/>}
