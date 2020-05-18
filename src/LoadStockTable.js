@@ -29,7 +29,7 @@ class LoadStockTable extends Component{
                                     <td className="cell">{item.close}</td>
                                     <td className="cell">{item.volume}</td>
                                 </tr>))
-                            };
+                            }
                         </tbody>
                         </Table>
             </div>);

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
-import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData,getHourlyPrice,getFiveDaysPrice} from "./RestApiCalls";
+import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData,getFiveDaysPrice,getNews} from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
 import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
 import StockChartBar from "./StockChartBar";
 import LoadStockTable from "./LoadStockTable";
- 
+import CompanyNews from "./CompanyNews";
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
 
@@ -15,7 +15,7 @@ class SearchBar extends Component {
         super(property);
         this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, 
         companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[], series: [{data:[]}],
-        hourlyPrice:[],fiveDayPrice:[],oneMonthPrice:[],sixMonthsPrice:[]
+        fiveDayPrice:[],oneMonthPrice:[],news:[]
     };
         this.symbol = { value: "" };
         this.getStock_MainFunction = this.getStock_MainFunction.bind(this);
@@ -84,10 +84,9 @@ class SearchBar extends Component {
             this.setState({ quote: null });
             this.setState({ companyprofile: null });
             this.setState({stockPrice:null}); 
-            this.setState({hourlyPrice:null});
             this.setState({fiveDayPrice:null});
-            this.setState({oneMonthPrice:null});
-            this.setState({sixMonthsPrice:null});
+            this.setState({oneMonthPrice:null}); 
+            this.setState({news:null});
         } else {
             this.getSymbolFromCompanyName(this.state.companyName);
             Promise.all([
@@ -95,7 +94,8 @@ class SearchBar extends Component {
                 getCompanyProfile(this.symbol.value),
                 logo(this.symbol.value),
                 getFullHistoricalData(this.symbol.value),
-                getFiveDaysPrice(this.symbol.value)
+                getFiveDaysPrice(this.symbol.value),
+                getNews(this.symbol.value)
             ]).then((values) => {
                 let quote_data = values[0];
                 this.setState({ latestQuote: constructLatestQuote(quote_data) });
@@ -105,6 +105,7 @@ class SearchBar extends Component {
                 this.setState({companyprofile: values[1]['profile'] });
                 this.setState({stockPrice:values[3]['historical']});
                 this.setState({fiveDayPrice:values[4]});
+                this.setState({news:values[5]});
                 var date = new Date();
                 var startdate = new Date(date.setMonth(date.getMonth()-1));
                 var oneMonthdata=values[3]['historical'].filter(function(obj){
@@ -112,7 +113,6 @@ class SearchBar extends Component {
                 return temp>=startdate;
                 }); 
                 this.setState({oneMonthPrice:oneMonthdata});
-                this.setState({sixMonthsPrice:values[7]});
                 var stockdata=[];
                 oneMonthdata.map(item=>
                     {
@@ -181,6 +181,9 @@ class SearchBar extends Component {
                 </div>
                 <div className="block_latestquote"  role="contentinfo">
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
+                </div>
+                <div>
+                    {(this.state.news == null || this.state.news.length==0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName}/>}
                 </div>
                 <div>
                     {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : 

@@ -150,28 +150,29 @@ class StockChartBar extends Component
       })
   }
 
-  // ondatechange= () =>
-  // {
-  //     const {startDate,endDate} = this.state;
-  //     if(startDate!=null && endDate!=null)
-  //     {
-  //         var filteredData=this.props.stockprice.filter(function(obj){
-  //         var temp = new Date(obj.date); 
-  //         return temp>=startDate && temp<=endDate;
-  //         }); 
-  //         this.setState({stockdata:filteredData});
-  //         var stock=[];
-  //         filteredData.map(item=>
-  //               {
-  //                   var stockdataArr = [];
-  //                   stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-  //                   stock.push(stockdataArr);
-  //               });
-  //           this.setState({ series: [{
-  //               data: stock}]
-  //           })
-  //     }
-  // }
+  onDatesChange = ({ startDate, endDate }) => {
+    
+    this.setState({ startDate, endDate });
+    console.log(this.state.startDate);
+          if(startDate!=null && endDate!=null)
+      {
+          var filteredData=this.props.stockprice.filter(function(obj){
+          var temp = new Date(obj.date); 
+          return temp>=startDate && temp<=endDate;
+          }); 
+          this.setState({stockdata:filteredData});
+          var stock=[];
+          filteredData.map(item=>
+                {
+                    var stockdataArr = [];
+                    stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+                    stock.push(stockdataArr);
+                });
+            this.setState({ series: [{
+                data: stock}]
+            })
+      }
+  }
  
   render() {
     return (
@@ -203,7 +204,7 @@ class StockChartBar extends Component
           isOutsideRange={day => (moment().diff(day) < 0)} 
           startDate={this.state.startDate}
           endDate={this.state.endDate}
-          onDatesChange={({ startDate, endDate }) => {this.setState({ startDate, endDate })}} 
+          onDatesChange={this.onDatesChange}
           focusedInput={this.state.focusedInput}
           onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
         />

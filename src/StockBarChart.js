@@ -9,11 +9,6 @@ class StockBarChart extends Component
   {
     var stockChartXValues=[];
     var stockChartYValues=[];
-    
-    this.props.sp.map(item=>
-      {
-        console.log(item.date); 
-      });
 
     this.props.sp.map(item=>
         {
