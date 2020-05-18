@@ -28,7 +28,7 @@ class CompanyNews extends Component
                         <header className="header">
                         {"News about " + this.props.companyName}
                         </header>
-                        <div  className="scrollable-content newscontent" id="newsContent">
+                        <div  className="scrollable-content newscontent">
                         {
                                         this.props.news.map(item=>
                                             (
