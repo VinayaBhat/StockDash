@@ -5,8 +5,7 @@ import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";
 import LoadCompanyProfile from "./LoadCompanyProfile";
 import SectorPerformance from "./SectorPerformance";
-import StockChartBar from "./StockChartBar";
-import LoadStockTable from "./LoadStockTable";
+import StockChartBar from "./StockChartBar"; 
 import CompanyNews from "./CompanyNews";
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
@@ -190,9 +189,7 @@ class SearchBar extends Component {
                     {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : 
                     <StockChartBar stockprice={this.state.stockPrice} series={this.state.series} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
                 </div>
-                <div>
-                {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : <LoadStockTable stockprice={this.state.stockPrice}/>}
-                </div>
+                
             </div>
         );
     }

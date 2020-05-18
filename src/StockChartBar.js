@@ -8,7 +8,7 @@ import StockBarChart from "./StockBarChart";
 import StockLineChart from "./StockLineChart";
 import StockCandleStickChart from "./StockCandleStickChart";
 import { Button } from 'react-bootstrap';
-
+import LoadStockTable from "./LoadStockTable";
 class StockChartBar extends Component
 {
   constructor(props) {
@@ -199,6 +199,7 @@ class StockChartBar extends Component
             <option value="barChart">BarChart</option>
           </select>
         <DateRangePicker
+         className="daterangepicker"
           startDateId="startDate"
           endDateId="endDate"
           isOutsideRange={day => (moment().diff(day) < 0)} 
@@ -221,30 +222,49 @@ class StockChartBar extends Component
         {
           if(this.state.stockdata.length!=0)
           {
-            return <StockBarChart sp={this.state.stockdata}/>;
+            return <div className="StockChartTable">
+              <StockBarChart sp={this.state.stockdata}/>
+              <LoadStockTable stockprice={this.state.stockdata}/>
+              </div>;
           }
           else
           {
-            return <StockBarChart sp={this.props.oneMonthPrice}/>;
+            return <div className="StockChartTable">
+              <StockBarChart sp={this.props.oneMonthPrice}/>
+              <LoadStockTable stockprice={this.props.oneMonthPrice}/>
+            </div>
+            ;
           }
         }
         else if(this.state.value=='lineChart')
         {
           if(this.state.stockdata.length!=0)
-            return <StockLineChart sp={this.state.stockdata}/>;
+            return <div className="StockChartTable">
+              <StockLineChart sp={this.state.stockdata}/>
+              <LoadStockTable stockprice={this.state.stockdata}/>
+              </div>;
           else
-            return <StockLineChart sp={this.props.oneMonthPrice}/>;
+            return <div className="StockChartTable">
+              <StockLineChart sp={this.props.oneMonthPrice}/>
+              <LoadStockTable stockprice={this.props.oneMonthPrice}/>
+              </div>;
         }
         else if(this.state.value=='candleStickChart')
         {
            
           if(this.state.series.length!=0)
           {
-            return <StockCandleStickChart sd={this.state.series}/>
+            return <div className="StockChartTable">
+            <StockCandleStickChart sd={this.state.series}/>
+            <LoadStockTable stockprice={this.state.stockdata}/>
+            </div>
           }
           else
           {
-            return <StockCandleStickChart sd={this.props.series}/>
+            return <div className="StockChartTable">
+            <StockCandleStickChart sd={this.props.series}/>
+            <LoadStockTable stockprice={this.props.oneMonthPrice}/>
+            </div>
           }
         }
       })()}
