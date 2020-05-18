@@ -21,7 +21,7 @@ class StockLineChart extends Component
         datasets: [
           {
             label: 'Closing Price',
-            fill: true,
+            fill: false,
             lineTension: 0.5,
             backgroundColor:'rgba(54, 128, 45, 0.76)',
             borderColor: 'rgba(0,0,0,0.5)',

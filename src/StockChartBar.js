@@ -237,6 +237,7 @@ class StockChartBar extends Component
         }
         else if(this.state.value=='candleStickChart')
         {
+           
           if(this.state.series.length!=0)
           {
             return <StockCandleStickChart sd={this.state.series}/>

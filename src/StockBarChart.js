@@ -45,17 +45,8 @@ class StockBarChart extends Component
                         legend:{
                         display:true,
                         position:'right'
-                        },
-                        scales: {
-                          xAxes: [{
-                            type: 'time',
-                            time: {
-                              displayFormats: {
-                                second: 'h:mm:ss a'
-                              }
-                            }
-                          }]
                         }
+                        
                     }}
                     />
                 </Col>

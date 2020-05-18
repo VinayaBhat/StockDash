@@ -14,7 +14,7 @@ class SearchBar extends Component {
     constructor(property) {
         super(property);
         this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, 
-        companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[], series: [{data:[]}],
+        companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[],   series: [{data:[]}] ,
         fiveDayPrice:[],oneMonthPrice:[],news:[]
     };
         this.symbol = { value: "" };
@@ -120,9 +120,10 @@ class SearchBar extends Component {
                         stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
                         stockdata.push(stockdataArr);
                     });
+
                 this.setState({ series: [{
-                    data: stockdata}]
-                })
+                        data: stockdata}]
+                    });
             });
         }
     }
