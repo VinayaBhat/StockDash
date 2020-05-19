@@ -25,14 +25,17 @@ export const symbols_company = () => {
   return fetch("https://api.iextrading.com/1.0/ref-data/symbols").then(res => res.json());
 };
 
+//Load full historial data (last 5 years data) of stock price
 export const getFullHistoricalData = symbol => {
   return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/"+symbol).then(res=>res.json());
 };
 
+//Load last 5 days data of stock price
 export const getFiveDaysPrice = symbol => {
   return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_1cd7010654304d9da845c98f9e030ab8").then(res=>res.json());
 }
 
+//Load latest news of company
 export const getNews = symbol => {
   return fetch("https://cloud.iexapis.com/stable/stock/"+symbol+"/news/last/5?token=pk_11795e9e241a4c278aee46443660ba6d").then(res=>res.json());
 }

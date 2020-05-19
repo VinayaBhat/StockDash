@@ -29,7 +29,7 @@ class StockCandleStickChart extends Component
       };
      
     }
-  
+    //passed data to candle stick chart and return candle stick chart
     render() 
     {  
       return (

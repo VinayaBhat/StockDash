@@ -25,7 +25,8 @@ class StockChartBar extends Component
     };
     this.onSelectChange=this.onSelectChange.bind(this)
   }
-
+  //On select option from dropdown setting current selected value to value in state and on selecting 
+  //candleStickChart if data is not set in state for candlestick chart then setting it.
   onSelectChange = (e) => {
     this.setState({value: e.target.value });
     if(e.target.value==="candleStickChart" && this.state.stockdata.length===0)
@@ -44,7 +45,8 @@ class StockChartBar extends Component
     }
   }
   
-
+  //Below function is setting fivedays data to stockdata in state to display 5 days data in chart and in table when click on 5 days button
+  //and also changing color of 5 days button to show it as active
   changeforFiveDays = () => {
     this.setState({stockdata:this.props.fiveDayPrice});
     var stock=[];
@@ -62,6 +64,8 @@ class StockChartBar extends Component
       btn.style.backgroundColor = "#D3D3D3";
   }
 
+  //Below function is setting one month data to stockdata in state to display one month data in chart and in table when click on one month button
+  //and also changing color of one month button to show it as active
   changeforOneMonth = () => {
     this.setState({stockdata:this.props.oneMonthPrice});
     var stock=[];
@@ -79,6 +83,7 @@ class StockChartBar extends Component
      btn.style.backgroundColor = "#D3D3D3";
   }
 
+  //Below function is setting all buttons color to original 
   setBtnColorOriginal()
   {
     var fivedbtn =  document.getElementById('fived');
@@ -97,6 +102,9 @@ class StockChartBar extends Component
     fiveybtn.style.backgroundColor = "#b3e6ff";
   }
 
+  //Below function is filtering past 6 month data from 5 years data and setting it to 
+  //stockdata in state to display 6 month data in chart and in table when click on 6 month button
+  //and also changing color of 6 month button to show it as active
   changeforSixMonths = () => {
     var date = new Date();
     var startdate = new Date(date.setMonth(date.getMonth()-6));
@@ -120,6 +128,9 @@ class StockChartBar extends Component
       btn.style.backgroundColor = "#D3D3D3";
   }
 
+  //Below function is filtering current year data from 5 years data and setting it to 
+  //stockdata in state to display current year data in chart and in table when click on ytd button
+  //and also changing color of ytd button to show it as active
   changeforYTD = () => { 
     var sdate = new Date(new Date().getFullYear(), 0, 1);
     var ytddata=this.props.stockprice.filter(function(obj){
@@ -142,6 +153,9 @@ class StockChartBar extends Component
       btn.style.backgroundColor = "#D3D3D3";
   }
 
+  //Below function is filtering past 1 year data from 5 years data and setting it to 
+  //stockdata in state to display past 1 year data in chart and in table when click on 1 year button
+  //and also changing color of 1 year button to show it as active
   changeforOneYear = () =>{
     var sdate = new Date();
     sdate.setFullYear(sdate.getFullYear()-1);
@@ -165,6 +179,9 @@ class StockChartBar extends Component
       btn.style.backgroundColor = "#D3D3D3";
   }
 
+  //Below function is filtering past 2 year data from 5 years data and setting it to 
+  //stockdata in state to display past 2 year data in chart and in table when click on 2 year button
+  //and also changing color of 2 year button to show it as active
   chageforTwoYear = () =>{
    var sdate = new Date();
     sdate.setFullYear(sdate.getFullYear()-2);
@@ -188,6 +205,8 @@ class StockChartBar extends Component
       btn.style.backgroundColor = "#D3D3D3";
   }
 
+    //Below function is setting 5 years data to stockdata in state to display past 5 year data in chart and in 
+    //table when click on 5 year button and also changing color of 5 year button to show it as active
   changeforFiveYears = () => {
     this.setState({stockdata:this.props.stockprice});
     var stock=[];
@@ -205,6 +224,8 @@ class StockChartBar extends Component
       btn.style.backgroundColor = "#D3D3D3";
   }
 
+  //Below function is filtering data for input date range from 5 years data and setting it to 
+  //stockdata in state to display filtered data in chart and in table when selecting date range from calender
   onDatesChange = ({ startDate, endDate }) => {
     
     this.setState({ startDate, endDate });
@@ -281,13 +302,15 @@ class StockChartBar extends Component
       </div>
      <div>
      {(() => {
-         
+        //If didn't get stock data for searched company from api then display none 
         if(this.props.stockprice===null || this.props.stockprice.length===0 )
         {
             return <div className="null_condition"></div>;
         }
+        //If barchart is selected from dropdown then call barchar component
         else if(this.state.value==='barChart')
         {
+          //load data for selected time
           if(this.state.stockdata.length!==0)
           {
             return <div className="StockChartTable">
@@ -297,6 +320,7 @@ class StockChartBar extends Component
           }
           else
           {
+            //by default load 1 month data
             return (this.props.oneMonthPrice===null)?<div className="null_condition"></div>:
             <div className="StockChartTable">
               <StockBarChart sp={this.props.oneMonthPrice}/>
@@ -305,8 +329,10 @@ class StockChartBar extends Component
             ;
           }
         }
+        //If lineChart is selected from dropdown then call lineChart component by default it will load line chart
         else if(this.state.value==='lineChart')
         {
+          //load data for selected time
           if(this.state.stockdata.length!==0)
             return <div className="StockChartTable">
               <StockLineChart sp={this.state.stockdata}/>
@@ -314,6 +340,7 @@ class StockChartBar extends Component
               </div>;
           else
           {
+            //by default load 1 month data
             return (this.props.oneMonthPrice===null)?<div className="null_condition"></div>:
             <div className="StockChartTable">
               <StockLineChart sp={this.props.oneMonthPrice}/>
@@ -321,6 +348,7 @@ class StockChartBar extends Component
               </div>;
           }
         }
+        //If candleStickChart is selected from dropdown then call candleStickChart component
         else if(this.state.value==='candleStickChart')
         {
           return <div className="StockChartTable">

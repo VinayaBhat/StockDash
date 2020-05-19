@@ -10,7 +10,7 @@ class LoadStockTable extends Component
             isFlipped: false
         };
       }
- 
+    //set flip status  
     handleClick = () => {
         this.setState({isFlipped:!this.state.isFlipped});
     };
@@ -38,6 +38,7 @@ class LoadStockTable extends Component
                             </thead>
                             <tbody>
                                     {
+                                        //used stockprice data which is passed in props from component which called load stock table component
                                         this.props.stockprice.map(item=>(
                                         <tr key={item.date}>
                                             <td className="cell">{item.date}</td>

@@ -10,13 +10,13 @@ class StockLineChart extends Component
     var stockChartYValues=[];
     
     this.props.sp.forEach(insertValues);
-
+    //Stored data for x-axis and y-axis in seperate arrays
     function insertValues(item)
     {
       stockChartXValues.push(item.date);
       stockChartYValues.push(item.close);
     }    
-       
+    //created dataset for line chart
     const state = {
         labels: stockChartXValues,
         datasets: [
@@ -31,7 +31,7 @@ class StockLineChart extends Component
           }
         ]
       }
-    
+      //passed data to line chart and return line chart
       return (
         <div className="chart_container">
                     <Line
