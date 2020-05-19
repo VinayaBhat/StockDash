@@ -18,14 +18,14 @@ class CompanyNews extends Component
     { 
         return (
             <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-            <div className="front-profile" onClick={this.handleClick}>
-                <div className="flex-item-profile">News about  {this.props.companyName}</div>
-                <button className="button-front-profile" role="button" onClick={this.handleClick}>Show</button>
+            <div className="front-news" onClick={this.handleClick}>
+                <div className="flex-news-item">News about  {this.props.companyName}</div>
+                <button className="button-news-front" onClick={this.handleClick}>Show</button>
             </div>
             <div onClick={this.handleClick}>
                 <div className="newscontainer">
                     <div className="section">
-                        <header className="header">
+                        <header className="header-news">
                         {"News about " + this.props.companyName}
                         </header>
                         <div  className="scrollable-content newscontent">
@@ -54,7 +54,7 @@ class CompanyNews extends Component
                                     }
                         </div>
                     </div>
-                    <button className="button-back-profile" role="button" onClick={this.handleClick}>Back</button>
+                    <button className="button-news-back" onClick={this.handleClick}>Back</button>
                 </div>
            </div>
            </ReactCardFlip>

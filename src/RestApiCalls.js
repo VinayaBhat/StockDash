@@ -34,5 +34,5 @@ export const getFiveDaysPrice = symbol => {
 }
 
 export const getNews = symbol => {
-  return fetch("https://sandbox.iexapis.com/stable/time-series/news/" + symbol + "?range=last-week&limit=10&token=Tsk_3528cdafe8f246bba0d457f2685ef1cb").then(res=>res.json());
+  return fetch("https://cloud.iexapis.com/stable/stock/"+symbol+"/news/last/5?token=pk_11795e9e241a4c278aee46443660ba6d").then(res=>res.json());
 }

@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Bar} from 'react-chartjs-2';
-import "./StockBarChart.css"
-import { Row, Col, Container } from 'react-bootstrap';
+import "./StockBarChart.css" 
 
 // defaults.global.maintainAspectRatio = false
 class StockBarChart extends Component 
@@ -11,11 +10,13 @@ class StockBarChart extends Component
     var stockChartXValues=[];
     var stockChartYValues=[];
 
-    this.props.sp.map(item=>
-        {
-            stockChartXValues.push(item.date);
-            stockChartYValues.push(item.close);
-        })
+    this.props.sp.forEach(insertValues);
+
+    function insertValues(item)
+    {
+      stockChartXValues.push(item.date);
+      stockChartYValues.push(item.close);
+    }    
        
     const state = {
         labels: stockChartXValues,
@@ -36,11 +37,6 @@ class StockBarChart extends Component
                     className="barChart"
                     data={state}
                     options={{
-                        title:{
-                        display:true,
-                        text:'Stock Closing Price',
-                        fontSize:20
-                        },
                         legend:{
                         display:true,
                         position:'bottom'

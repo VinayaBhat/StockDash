@@ -32,44 +32,69 @@ class StockChartBar extends Component
     {
       this.setState({stockdata:this.props.oneMonthPrice});
       var stock=[];
-      this.props.oneMonthPrice.map(item=>
-            {
-                var stockdataArr = [];
-                stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-                stock.push(stockdataArr);
-            });
+      for(let i=0;i<this.props.oneMonthPrice.length;i++)
+      {
+        var stockdataArr = [];
+        stockdataArr.push(this.props.oneMonthPrice[i].date,this.props.oneMonthPrice[i].open,this.props.oneMonthPrice[i].high,this.props.oneMonthPrice[i].low,this.props.oneMonthPrice[i].close);
+        stock.push(stockdataArr);
+      }
         this.setState({ series: [{
             data: stock}]
         })
     }
   }
+  
 
   changeforFiveDays = () => {
     this.setState({stockdata:this.props.fiveDayPrice});
     var stock=[];
-    this.props.fiveDayPrice.map(item=>
-          {
-              var stockdataArr = [];
-              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-              stock.push(stockdataArr);
-          });
+    for(let i=0;i<this.props.fiveDayPrice.length;i++)
+    {
+      var stockdataArr = [];
+      stockdataArr.push(this.props.fiveDayPrice[i].date,this.props.fiveDayPrice[i].open,this.props.fiveDayPrice[i].high,this.props.fiveDayPrice[i].low,this.props.fiveDayPrice[i].close);
+      stock.push(stockdataArr);
+    }
       this.setState({ series: [{
           data: stock}]
       })
+      this.setBtnColorOriginal();
+      var btn =  document.getElementById('fived');
+      btn.style.backgroundColor = "#D3D3D3";
   }
 
   changeforOneMonth = () => {
     this.setState({stockdata:this.props.oneMonthPrice});
     var stock=[];
-    this.props.oneMonthPrice.map(item=>
-          {
-              var stockdataArr = [];
-              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-              stock.push(stockdataArr);
-          });
+    for(let i=0;i<this.props.oneMonthPrice.length;i++)
+      {
+        var stockdataArr = [];
+        stockdataArr.push(this.props.oneMonthPrice[i].date,this.props.oneMonthPrice[i].open,this.props.oneMonthPrice[i].high,this.props.oneMonthPrice[i].low,this.props.oneMonthPrice[i].close);
+        stock.push(stockdataArr);
+      }
       this.setState({ series: [{
           data: stock}]
       })
+     this.setBtnColorOriginal(); 
+     var btn =  document.getElementById('onem');
+     btn.style.backgroundColor = "#D3D3D3";
+  }
+
+  setBtnColorOriginal()
+  {
+    var fivedbtn =  document.getElementById('fived');
+    fivedbtn.style.backgroundColor = "#b3e6ff";
+    var onembtn = document.getElementById('onem');
+    onembtn.style.backgroundColor =  "#b3e6ff";
+    var sixmbtn = document.getElementById('sixm');
+    sixmbtn.style.backgroundColor = "#b3e6ff";
+    var ytdbtn = document.getElementById('ytd');
+    ytdbtn.style.backgroundColor = "#b3e6ff";
+    var oneybtn = document.getElementById('oney');
+    oneybtn.style.backgroundColor = "#b3e6ff";
+    var twoybtn = document.getElementById('twoy');
+    twoybtn.style.backgroundColor = "#b3e6ff";
+    var fiveybtn = document.getElementById('fivey');
+    fiveybtn.style.backgroundColor = "#b3e6ff";
   }
 
   changeforSixMonths = () => {
@@ -81,15 +106,18 @@ class StockChartBar extends Component
     }); 
     this.setState({stockdata:sixMonthData});
     var stock=[];
-    sixMonthData.map(item=>
-          {
-              var stockdataArr = [];
-              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-              stock.push(stockdataArr);
-          });
+    for(let i=0;i<sixMonthData.length;i++)
+      {
+        var stockdataArr = [];
+        stockdataArr.push(sixMonthData[i].date,sixMonthData[i].open,sixMonthData[i].high,sixMonthData[i].low,sixMonthData[i].close);
+        stock.push(stockdataArr);
+      }
       this.setState({ series: [{
           data: stock}]
       })
+      this.setBtnColorOriginal(); 
+      var btn =  document.getElementById('sixm');
+      btn.style.backgroundColor = "#D3D3D3";
   }
 
   changeforYTD = () => { 
@@ -100,15 +128,18 @@ class StockChartBar extends Component
     }); 
     this.setState({stockdata:ytddata});
     var stock=[];
-    ytddata.map(item=>
-          {
-              var stockdataArr = [];
-              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-              stock.push(stockdataArr);
-          });
+    for(let i=0;i<ytddata.length;i++)
+      {
+        var stockdataArr = [];
+        stockdataArr.push(ytddata[i].date,ytddata[i].open,ytddata[i].high,ytddata[i].low,ytddata[i].close);
+        stock.push(stockdataArr);
+      }
       this.setState({ series: [{
           data: stock}]
       })
+      this.setBtnColorOriginal(); 
+      var btn =  document.getElementById('ytd');
+      btn.style.backgroundColor = "#D3D3D3";
   }
 
   changeforOneYear = () =>{
@@ -120,15 +151,18 @@ class StockChartBar extends Component
     }); 
     this.setState({stockdata:oneyeardata});
     var stock=[];
-    oneyeardata.map(item=>
-          {
-              var stockdataArr = [];
-              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-              stock.push(stockdataArr);
-          });
+    for(let i=0;i<oneyeardata.length;i++)
+      {
+        var stockdataArr = [];
+        stockdataArr.push(oneyeardata[i].date,oneyeardata[i].open,oneyeardata[i].high,oneyeardata[i].low,oneyeardata[i].close);
+        stock.push(stockdataArr);
+      }
       this.setState({ series: [{
           data: stock}]
       })
+      this.setBtnColorOriginal(); 
+      var btn =  document.getElementById('oney');
+      btn.style.backgroundColor = "#D3D3D3";
   }
 
   chageforTwoYear = () =>{
@@ -140,29 +174,35 @@ class StockChartBar extends Component
     }); 
     this.setState({stockdata:twoyeardata});
     var stock=[];
-    twoyeardata.map(item=>
-          {
-              var stockdataArr = [];
-              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-              stock.push(stockdataArr);
-          });
+    for(let i=0;i<twoyeardata.length;i++)
+      {
+        var stockdataArr = [];
+        stockdataArr.push(twoyeardata[i].date,twoyeardata[i].open,twoyeardata[i].high,twoyeardata[i].low,twoyeardata[i].close);
+        stock.push(stockdataArr);
+      }
       this.setState({ series: [{
           data: stock}]
       })
+      this.setBtnColorOriginal(); 
+      var btn =  document.getElementById('twoy');
+      btn.style.backgroundColor = "#D3D3D3";
   }
 
   changeforFiveYears = () => {
     this.setState({stockdata:this.props.stockprice});
     var stock=[];
-    this.props.stockprice.map(item=>
-          {
-              var stockdataArr = [];
-              stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-              stock.push(stockdataArr);
-          });
+    for(let i=0;i<this.props.stockprice.length;i++)
+    {
+      var stockdataArr = [];
+      stockdataArr.push(this.props.stockprice[i].date,this.props.stockprice[i].open,this.props.stockprice[i].high,this.props.stockprice[i].low,this.props.stockprice[i].close);
+      stock.push(stockdataArr);
+    }
       this.setState({ series: [{
           data: stock}]
       })
+      this.setBtnColorOriginal(); 
+      var btn =  document.getElementById('fivey');
+      btn.style.backgroundColor = "#D3D3D3";
   }
 
   onDatesChange = ({ startDate, endDate }) => {
@@ -177,12 +217,12 @@ class StockChartBar extends Component
           }); 
           this.setState({stockdata:filteredData});
           var stock=[];
-          filteredData.map(item=>
-                {
-                    var stockdataArr = [];
-                    stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-                    stock.push(stockdataArr);
-                });
+          for(let i=0;i<filteredData.length;i++)
+          {
+            var stockdataArr = [];
+            stockdataArr.push(filteredData[i].date,filteredData[i].open,filteredData[i].high,filteredData[i].low,filteredData[i].close);
+            stock.push(stockdataArr);
+          }
             this.setState({ series: [{
                 data: stock}]
             })
@@ -193,38 +233,37 @@ class StockChartBar extends Component
     return (
      <div className="mainContainer">
       <div className="searchBar">
-        {/* <div className="itemcontainer"> */}
         <Container fluid>
           <Row className="row">
-            <Col sm={1}>
-                <Button variant="5day" className="button" onClick={this.changeforFiveDays}>5d</Button>
+            <Col sm={1} md={1}>
+                <Button variant="5day" className="button" onClick={this.changeforFiveDays} id="fived">5d</Button>
             </Col>
-            <Col sm={1}>
-                <Button variant="1month" className="button" onClick={this.changeforOneMonth}>1m</Button>
+            <Col sm={1} md={1}>
+                <Button variant="1month" className="button" onClick={this.changeforOneMonth} id="onem">1m</Button>
             </Col>
-            <Col sm={1}>
-                <Button variant="6months" className="button" onClick={this.changeforSixMonths}>6m</Button>
+            <Col sm={1} md={1}> 
+                <Button variant="6months" className="button" onClick={this.changeforSixMonths} id="sixm">6m</Button>
             </Col>
-            <Col sm={1}>
-                <Button variant="ytd" className="button" onClick={this.changeforYTD}>YTD</Button>
+            <Col sm={1} md={1}>
+                <Button variant="ytd" className="button" onClick={this.changeforYTD} id="ytd">ytd</Button>
             </Col>
-            <Col sm={1}>
-                <Button variant="1year" className="button" onClick={this.changeforOneYear}>1y</Button>
+            <Col sm={1} md={1}>
+                <Button variant="1year" className="button" onClick={this.changeforOneYear} id="oney">1y</Button>
             </Col>
-            <Col sm={1}>
-                <Button variant="2years" className="button" onClick={this.chageforTwoYear}>2y</Button>
+            <Col sm={1} md={1}>
+                <Button variant="2years" className="button" onClick={this.chageforTwoYear} id="twoy">2y</Button>
             </Col>
-            <Col sm={1}>
-                <Button variant="5y" className="button" onClick={this.changeforFiveYears}>5y</Button>
+            <Col sm={1} md={1}>
+                <Button variant="5y" className="button" onClick={this.changeforFiveYears} id="fivey">5y</Button>
             </Col>
-            <Col sm={1}>
+            <Col sm={1} md={1}>
               <select defaultValue={'lineChart'} className="dropDown" onChange={this.onSelectChange}>
                 <option value="lineChart">Line</option>
                 <option value="candleStickChart">CandleStick</option>
                 <option value="barChart">Bar</option>
               </select>
             </Col>
-            <Col sm={4}>
+            <Col sm={4} md={4}>
                 <DateRangePicker 
                 startDateId="startDate"
                 endDateId="endDate"
@@ -238,19 +277,18 @@ class StockChartBar extends Component
             </Col>
           
           </Row>
-        {/* </div> */}
         </Container>
       </div>
      <div>
      {(() => {
          
-        if(this.props.stockprice==null || this.props.stockprice.length==0 )
+        if(this.props.stockprice===null || this.props.stockprice.length===0 )
         {
             return <div className="null_condition"></div>;
         }
-        else if(this.state.value=='barChart')
+        else if(this.state.value==='barChart')
         {
-          if(this.state.stockdata.length!=0)
+          if(this.state.stockdata.length!==0)
           {
             return <div className="StockChartTable">
               <StockBarChart sp={this.state.stockdata}/>
@@ -259,27 +297,31 @@ class StockChartBar extends Component
           }
           else
           {
-            return <div className="StockChartTable">
+            return (this.props.oneMonthPrice===null)?<div className="null_condition"></div>:
+            <div className="StockChartTable">
               <StockBarChart sp={this.props.oneMonthPrice}/>
               <LoadStockTable stockprice={this.props.oneMonthPrice}/>
             </div>
             ;
           }
         }
-        else if(this.state.value=='lineChart')
+        else if(this.state.value==='lineChart')
         {
-          if(this.state.stockdata.length!=0)
+          if(this.state.stockdata.length!==0)
             return <div className="StockChartTable">
               <StockLineChart sp={this.state.stockdata}/>
               <LoadStockTable stockprice={this.state.stockdata}/>
               </div>;
           else
-            return <div className="StockChartTable">
+          {
+            return (this.props.oneMonthPrice===null)?<div className="null_condition"></div>:
+            <div className="StockChartTable">
               <StockLineChart sp={this.props.oneMonthPrice}/>
               <LoadStockTable stockprice={this.props.oneMonthPrice}/>
               </div>;
+          }
         }
-        else if(this.state.value=='candleStickChart')
+        else if(this.state.value==='candleStickChart')
         {
           return <div className="StockChartTable">
             <StockCandleStickChart sd={this.state.series}/>

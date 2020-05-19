@@ -1,5 +1,4 @@
 import React,{Component} from 'react'; 
-import { Row, Col, Container } from 'react-bootstrap';
 import ReactApexChart from "react-apexcharts";
 import "./StockBarChart.css"
 

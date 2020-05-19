@@ -9,11 +9,13 @@ class StockLineChart extends Component
     var stockChartXValues=[];
     var stockChartYValues=[];
     
-    this.props.sp.map(item=>
-        {
-            stockChartXValues.push(item.date);
-            stockChartYValues.push(item.close);
-        })
+    this.props.sp.forEach(insertValues);
+
+    function insertValues(item)
+    {
+      stockChartXValues.push(item.date);
+      stockChartYValues.push(item.close);
+    }    
        
     const state = {
         labels: stockChartXValues,
@@ -36,11 +38,6 @@ class StockLineChart extends Component
                     className="barChart"
                     data={state}
                     options={{
-                        title:{
-                        display:true,
-                        text:'Stock Closing Price',
-                        fontSize:20
-                        },
                         legend:{
                         display:true,
                         position:'bottom'

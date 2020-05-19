@@ -31,9 +31,9 @@
     min-height: 0;
   }
 
-  .header
+  .header-news
   {
-    font-size: 20px;
+    font-size: 2vw;
     font-weight: bold;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -60,7 +60,7 @@
 
   .headline
   {
-    font-size: 18px;
+    font-size: 1vw;
     font-weight: bold;
     margin-top: 1%;
     font-family: sans-serif;
@@ -75,17 +75,17 @@
   .summary
   {
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 1vw;
   }
 
   .dateSource
   {
     margin-top: 0;  
     font-family: sans-serif;
-    font-size: 15px;
+    font-size: 80%;
   }
 
-  .front-profile {
+  .front-news {
     display: flex;
     flex-wrap: wrap;
     height: fit-content;
@@ -113,17 +113,17 @@
       inset 1px 2px 0px rgba(255, 255, 255, 0.4);
   }
   
-  .flex-item-profile {
+  .flex-news-item {
     width: 100%;
     height: 20%;
-    font-size: 2rem;
+    font-size: 2.5vw;
     font-weight: bold;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     margin: 2%;
   }
   
-  .button-front-profile {
+  .button-news-front {
     margin: 2%;
     width: 30%;
     background-color: black;
@@ -135,7 +135,7 @@
       "Lucida Sans", Arial, sans-serif;
   }
 
-  .button-back-profile {
+  .button-news-back {
     margin: 2%;
     width: 30%;
     background-color: black;
@@ -148,7 +148,7 @@
       "Lucida Sans", Arial, sans-serif;
   }
   
-  .button-front-profile:hover {
+  .button-news-front:hover {
     margin: 2%;
     width: 30%;
     background-color: #b3e6ff;
@@ -159,7 +159,7 @@
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
   }
-  .button-back-profile:hover {
+  .button-news-back:hover {
     margin: 2%;
     width: 30%;
     background-color: #b3e6ff;
@@ -169,4 +169,73 @@
     font-size: 0.8rem;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
+  }
+
+  @media screen and (max-width: 414px) {
+  
+    .front-news > .flex-news-item > button {
+      width: 60%;
+      background-color: black;
+      color: white;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+  
+    .button-news-back {
+      width: 60%;
+      background-color: black;
+      color: white;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+
+    .button-news-front {
+      width: 60%;
+      background-color: black;
+      color: white;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+  
+    .front-news > .flex-news-item > button:hover{
+      width: 60%;
+      background-color: white;
+      color: black;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+  
+    .button-news-back:hover {
+      width: 60%;
+      background-color: white;
+      color: black;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+
+    .button-news-front:hover {
+      width: 60%;
+      background-color: white;
+      color: black;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
   }

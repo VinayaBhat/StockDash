@@ -12,7 +12,7 @@ class SearchBar extends Component {
     constructor(property) {
         super(property);
         this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, 
-        companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[],   series: [{data:[]}] ,
+        companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[],
         fiveDayPrice:[],oneMonthPrice:[],news:[]
     };
         this.symbol = { value: "" };
@@ -111,19 +111,6 @@ class SearchBar extends Component {
                 return temp>=startdate;
                 }); 
                 this.setState({oneMonthPrice:oneMonthdata});
-                var stockdata=[];
-                oneMonthdata.map(item=>
-                    {
-                        var stockdataArr = [];
-                        stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
-                        stockdata.push(stockdataArr);
-                    });
-
-                var temp = [{data:[]}];
-                
-                temp.data=stockdata;
-
-                this.setState({ series:temp}); 
             });
         }
     }
@@ -183,11 +170,11 @@ class SearchBar extends Component {
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
                 </div>
                 <div>
-                    {(this.state.news == null || this.state.news.length===0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName}/>}
+                    {(this.state.news === null || this.state.news.length===0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName}/>}
                 </div>
                 <div>
-                    {(this.state.stockPrice==null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> : 
-                    <StockChartBar stockprice={this.state.stockPrice} series={this.state.series} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
+                    {(this.state.stockPrice=== undefined || this.state.stockPrice===null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> : 
+                    <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
                 </div>
                 
             </div>

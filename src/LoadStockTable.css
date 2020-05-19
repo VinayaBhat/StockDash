@@ -32,7 +32,7 @@ th {
   background-color: rgb(238, 236, 142);
     color: black;
     text-align: center;
-    font-size: 10px;
+    font-size: 1vw;
     border-radius: 25%;
     margin-left: auto;
     margin-right: auto;
@@ -63,7 +63,7 @@ th {
   background-color: lightgoldenrodyellow;
     color: black;
     text-align: center;
-    font-size: 10px;
+    font-size: 0.8vw;
     border-radius: 25%;
     margin-left: auto;
     margin-right: auto;
@@ -135,17 +135,17 @@ th {
       inset 1px 2px 0px rgba(255, 255, 255, 0.4);
   }
   
-  .flex-item-profile {
+  .flex-table-item {
     width: 100%;
     height: 20%;
-    font-size: 2rem;
+    font-size: 2.5vw;
     font-weight: bold;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     margin: 2%;
   }
   
-  .button-front {
+  .button-table-front {
     margin: 2%;
     width: 30%;
     background-color: black;
@@ -157,7 +157,7 @@ th {
       "Lucida Sans", Arial, sans-serif;
   }
 
-  .button-back {
+  .button-table-back {
     margin: 2%;
     width: 30%;
     background-color: black;
@@ -169,7 +169,7 @@ th {
       "Lucida Sans", Arial, sans-serif;
   }
   
-  .button-front:hover {
+  .button-table-front:hover {
     margin: 2%;
     width: 30%;
     background-color: #b3e6ff;
@@ -180,7 +180,7 @@ th {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
   }
-  .button-back:hover {
+  .button-table-back:hover {
     margin: 5%;
     width: 30%;
     background-color: #b3e6ff;
@@ -190,4 +190,73 @@ th {
     font-size: 0.8rem;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
+  }
+
+  @media screen and (max-width: 414px) {
+  
+    .front-table > .flex-table-item > button {
+      width: 60%;
+      background-color: black;
+      color: white;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+  
+    .button-table-back {
+      width: 60%;
+      background-color: black;
+      color: white;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+
+    .button-table-front {
+      width: 60%;
+      background-color: black;
+      color: white;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+  
+    .front-table > .flex-table-item > button:hover{
+      width: 60%;
+      background-color: white;
+      color: black;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+  
+    .button-table-back:hover {
+      width: 60%;
+      background-color: white;
+      color: black;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
+
+    .button-table-front:hover {
+      width: 60%;
+      background-color: white;
+      color: black;
+      padding: 1%;
+      border-radius: 10%;
+      font-size: 100%;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    }
   }
