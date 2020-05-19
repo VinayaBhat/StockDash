@@ -31,12 +31,7 @@ class StockBarChart extends Component
       }
     
       return (
-        <Container className="chart_container">
-          <Row>
-                <Col xs={12} className="chart">
-                 
-                {/* <div className="chart"> */}
-
+                  <div className="chart_container">
                     <Bar
                     className="barChart"
                     data={state}
@@ -52,11 +47,7 @@ class StockBarChart extends Component
                         } 
                     }}
                     />
-                    {/* </div> */}
-                   
-                   </Col>
-            </Row>
-       </Container> 
+                     </div>
       );
   }
 }

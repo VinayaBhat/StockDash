@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Line} from 'react-chartjs-2';
-import "./StockBarChart.css"
-import { Row, Col, Container } from 'react-bootstrap';
+import "./StockBarChart.css" 
 
 class StockLineChart extends Component 
 {
@@ -32,9 +31,7 @@ class StockLineChart extends Component
       }
     
       return (
-        <Container className="chart_container">
-          <Row>
-                <Col xs={12} className="chart">
+        <div className="chart_container">
                     <Line
                     className="barChart"
                     data={state}
@@ -46,13 +43,11 @@ class StockLineChart extends Component
                         },
                         legend:{
                         display:true,
-                        position:'right'
+                        position:'bottom'
                         }
                     }}
                     />
-                </Col>
-            </Row>
-       </Container>
+                    </div>
       );
   }
 }

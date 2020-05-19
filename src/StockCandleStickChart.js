@@ -34,13 +34,9 @@ class StockCandleStickChart extends Component
     render() 
     {  
       return (
-        <Container className="chart_container">
-        <Row>
-              <Col xs={12} className="chart">
+          <div className="chart_container">
                     <ReactApexChart options={this.state.options} series={this.props.sd} type="candlestick" height={350} />
-            </Col>
-            </Row>
-       </Container>
+          </div>
       );
     }
   } 
