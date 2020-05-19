@@ -248,6 +248,7 @@ class StockChartBar extends Component
                 data: stock}]
             })
       }
+      this.setBtnColorOriginal();
   }
  
   render() {
