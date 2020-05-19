@@ -32,7 +32,7 @@ class StockCandleStickChart extends Component
     }
   
     render() 
-    { 
+    {  
       return (
         <Container className="chart_container">
         <Row>

@@ -9,6 +9,7 @@ import StockLineChart from "./StockLineChart";
 import StockCandleStickChart from "./StockCandleStickChart";
 import { Button } from 'react-bootstrap';
 import LoadStockTable from "./LoadStockTable";
+import { Row, Col, Container } from 'react-bootstrap';
 class StockChartBar extends Component
 {
   constructor(props) {
@@ -27,6 +28,20 @@ class StockChartBar extends Component
 
   onSelectChange = (e) => {
     this.setState({value: e.target.value });
+    if(e.target.value==="candleStickChart" && this.state.stockdata.length===0)
+    {
+      this.setState({stockdata:this.props.oneMonthPrice});
+      var stock=[];
+      this.props.oneMonthPrice.map(item=>
+            {
+                var stockdataArr = [];
+                stockdataArr.push(item.date,item.open,item.high,item.low,item.close);
+                stock.push(stockdataArr);
+            });
+        this.setState({ series: [{
+            data: stock}]
+        })
+    }
   }
 
   changeforFiveDays = () => {
@@ -153,8 +168,8 @@ class StockChartBar extends Component
   onDatesChange = ({ startDate, endDate }) => {
     
     this.setState({ startDate, endDate });
-    console.log(this.state.startDate);
-          if(startDate!=null && endDate!=null)
+   
+      if(startDate!=null && endDate!=null)
       {
           var filteredData=this.props.stockprice.filter(function(obj){
           var temp = new Date(obj.date); 
@@ -178,38 +193,53 @@ class StockChartBar extends Component
     return (
      <div className="mainContainer">
       <div className="searchBar">
-        <div className="itemcontainer">
-        <Button variant="5day" className="button" 
-         onClick={this.changeforFiveDays}>5 day</Button>
-        <Button variant="1month" className="button"
-         onClick={this.changeforOneMonth}>1 month</Button>
-        <Button variant="6months" className="button"
-         onClick={this.changeforSixMonths}>6 months</Button>
-        <Button variant="ytd" className="button"
-        onClick={this.changeforYTD}>YTD</Button>
-        <Button variant="1year" className="button"
-        onClick={this.changeforOneYear}>1 year</Button>
-        <Button variant="2years" className="button"
-        onClick={this.chageforTwoYear}>2 years</Button>
-          <Button variant="5y" className="button"
-        onClick={this.changeforFiveYears}>5 years</Button>
-          <select className="dropDown" onChange={this.onSelectChange}>
-            <option selected value="lineChart">LineChart</option>
-            <option value="candleStickChart">CandleStickChart</option>
-            <option value="barChart">BarChart</option>
-          </select>
-        <DateRangePicker
-         className="daterangepicker"
-          startDateId="startDate"
-          endDateId="endDate"
-          isOutsideRange={day => (moment().diff(day) < 0)} 
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
-          onDatesChange={this.onDatesChange}
-          focusedInput={this.state.focusedInput}
-          onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
-        />
-        </div>
+        {/* <div className="itemcontainer"> */}
+        <Container fluid>
+          <Row className="row">
+            <Col sm={1}>
+                <Button variant="5day" className="button" onClick={this.changeforFiveDays}>5d</Button>
+            </Col>
+            <Col sm={1}>
+                <Button variant="1month" className="button" onClick={this.changeforOneMonth}>1m</Button>
+            </Col>
+            <Col sm={1}>
+                <Button variant="6months" className="button" onClick={this.changeforSixMonths}>6m</Button>
+            </Col>
+            <Col sm={1}>
+                <Button variant="ytd" className="button" onClick={this.changeforYTD}>YTD</Button>
+            </Col>
+            <Col sm={1}>
+                <Button variant="1year" className="button" onClick={this.changeforOneYear}>1y</Button>
+            </Col>
+            <Col sm={1}>
+                <Button variant="2years" className="button" onClick={this.chageforTwoYear}>2y</Button>
+            </Col>
+            <Col sm={1}>
+                <Button variant="5y" className="button" onClick={this.changeforFiveYears}>5y</Button>
+            </Col>
+            <Col sm={1}>
+              <select defaultValue={'lineChart'} className="dropDown" onChange={this.onSelectChange}>
+                <option value="lineChart">Line</option>
+                <option value="candleStickChart">CandleStick</option>
+                <option value="barChart">Bar</option>
+              </select>
+            </Col>
+            <Col sm={4}>
+                <DateRangePicker 
+                startDateId="startDate"
+                endDateId="endDate"
+                isOutsideRange={day => (moment().diff(day) < 0)} 
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                onDatesChange={this.onDatesChange}
+                focusedInput={this.state.focusedInput}
+                onFocusChange={(focusedInput) => { this.setState({ focusedInput })}}
+              />
+            </Col>
+          
+          </Row>
+        {/* </div> */}
+        </Container>
       </div>
      <div>
      {(() => {
@@ -251,21 +281,14 @@ class StockChartBar extends Component
         }
         else if(this.state.value=='candleStickChart')
         {
-           
-          if(this.state.series.length!=0)
-          {
-            return <div className="StockChartTable">
+          return <div className="StockChartTable">
             <StockCandleStickChart sd={this.state.series}/>
             <LoadStockTable stockprice={this.state.stockdata}/>
             </div>
-          }
-          else
-          {
-            return <div className="StockChartTable">
-            <StockCandleStickChart sd={this.props.series}/>
-            <LoadStockTable stockprice={this.props.oneMonthPrice}/>
-            </div>
-          }
+        }
+        else
+        {
+          return <div className="null_condition"></div>
         }
       })()}
    </div>

@@ -3,6 +3,7 @@ import {Bar} from 'react-chartjs-2';
 import "./StockBarChart.css"
 import { Row, Col, Container } from 'react-bootstrap';
 
+// defaults.global.maintainAspectRatio = false
 class StockBarChart extends Component 
 {
   render() 
@@ -33,6 +34,9 @@ class StockBarChart extends Component
         <Container className="chart_container">
           <Row>
                 <Col xs={12} className="chart">
+                 
+                {/* <div className="chart"> */}
+
                     <Bar
                     className="barChart"
                     data={state}
@@ -44,14 +48,15 @@ class StockBarChart extends Component
                         },
                         legend:{
                         display:true,
-                        position:'right'
-                        }
-                        
+                        position:'bottom'
+                        } 
                     }}
                     />
-                </Col>
+                    {/* </div> */}
+                   
+                   </Col>
             </Row>
-       </Container>
+       </Container> 
       );
   }
 }

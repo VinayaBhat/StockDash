@@ -9,7 +9,6 @@ import StockChartBar from "./StockChartBar";
 import CompanyNews from "./CompanyNews";
 //Search Bar (AutoComplete Textbox) with all results.
 class SearchBar extends Component {
-
     constructor(property) {
         super(property);
         this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, 
@@ -120,9 +119,11 @@ class SearchBar extends Component {
                         stockdata.push(stockdataArr);
                     });
 
-                this.setState({ series: [{
-                        data: stockdata}]
-                    });
+                var temp = [{data:[]}];
+                
+                temp.data=stockdata;
+
+                this.setState({ series:temp}); 
             });
         }
     }
@@ -169,7 +170,6 @@ class SearchBar extends Component {
 
     render() {
         const { text } = this.state;
-        
         return (
             <div role="main">
                 <div className="AutoComplete" role="search">
@@ -183,10 +183,10 @@ class SearchBar extends Component {
                     {this.state.companyprofile == null ? <div className="null_condition"></div> : <LoadCompanyProfile{...this.state.companyprofile} />}
                 </div>
                 <div>
-                    {(this.state.news == null || this.state.news.length==0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName}/>}
+                    {(this.state.news == null || this.state.news.length===0) ? <div className="null_condition"></div> : <CompanyNews news={this.state.news} companyName={this.state.companyName}/>}
                 </div>
                 <div>
-                    {this.state.stockPrice.length == 0 ? <div className="null_condition"></div> : 
+                    {(this.state.stockPrice==null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> : 
                     <StockChartBar stockprice={this.state.stockPrice} series={this.state.series} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
                 </div>
                 
