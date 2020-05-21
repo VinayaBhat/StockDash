@@ -166,6 +166,17 @@ class SearchBar extends Component {
                 Utilities: values[1]['sectorPerformance'][14].changesPercentage
             }
             this.setState({ sector_data: data_temp });
+        }).catch((e)=>{
+            console.log(e);
+            this.setState({ latestQuote: null });
+            this.setState({ logo_img: null });
+            this.setState({ quote: null });
+            this.setState({ companyprofile: null });
+            this.setState({ stockPrice: null });
+            this.setState({ fiveDayPrice: null });
+            this.setState({ oneMonthPrice: null });
+            this.setState({ news: null });
+            this.setState({ errorMsg: "OOPS! Something went wrong. Please try again." }); 
         });
     }
 
