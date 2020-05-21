@@ -79,11 +79,11 @@ const LoadCompanyProfile = ({
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Changes: </Col>
-                        <Col className="profile-content changepercent" style={{ color: changes < 0 ? "red" : "green" }} xs={12} sm={9}>{changes}</Col>
+                        <Col className="profile-content changepercent" style={{ color: changes < 0 ? "#8F0000" : "#004D00" }} xs={12} sm={9}>{changes}</Col>
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Changes Percentage: </Col>
-                        <Col className="profile-content" style={{ color: (parseFloat(percent) < 0) ? "red" : "green" }} xs={12} sm={9}>{changesPercentage}</Col>
+                        <Col className="profile-content" style={{ color: (parseFloat(percent) < 0) ? "#8F0000" : "#004D00" }} xs={12} sm={9}>{changesPercentage}</Col>
                     </Row>
                     <Row className="row-profile">
                         <Col className="profile-heading" xs={12} sm={3}>Beta: </Col>
@@ -106,7 +106,7 @@ const LoadCompanyProfile = ({
                         <Col className="profile-content" xs={12} sm={9}><a href={website} rel="noopener noreferrer" target="_blank">{website}</a></Col>
                     </Row>
                 </Container>
-                <button className="button-back-profile"  onClick={handleClick}>Back</button>
+                <button className="button-back-profile" onClick={handleClick}>Back</button>
             </div>
         </ReactCardFlip>
     )

@@ -111,7 +111,6 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
-
 .row-profile {
   margin: 1%;
 }
@@ -149,6 +148,9 @@ img {
   text-align: justify;
   text-justify: inter-word;
 }
+a {
+  color: #0000e0;
+}
 
 @media screen and (max-width: 414px) {
   .profile-heading,
@@ -178,10 +180,10 @@ img {
       "Lucida Sans", Arial, sans-serif;
   }
 
-  .button-front-profile:hover{
+  .button-front-profile:hover {
     margin: 2%;
     width: 60%;
-    background-color: #b3e6ff;;
+    background-color: #b3e6ff;
     color: black;
     padding: 2%;
     border-radius: 10%;
@@ -192,7 +194,7 @@ img {
   .button-back-profile:hover {
     margin: 2%;
     width: 60%;
-    background-color: #b3e6ff;;
+    background-color: #b3e6ff;
     color: black;
     padding: 1%;
     border-radius: 10%;
@@ -213,5 +215,6 @@ img {
 
   a {
     font-size: 80%;
+    color: #0000e0;
   }
 }

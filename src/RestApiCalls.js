@@ -8,7 +8,7 @@ export const loadLatestQuote = symbol => {
 
 //Load the company profile data
 export const getCompanyProfile = symbol => {
-  return fetch("https://financialmodelingprep.com/api/v3/company/profile/" + symbol+"?apikey=58240a5fd092ccf026ab5f57a6e67078").then(res => res.json());
+  return fetch("https://financialmodelingprep.com/api/v3/company/profile/" + symbol + "?apikey=58240a5fd092ccf026ab5f57a6e67078").then(res => res.json());
 };
 
 //Load the Company Logo
@@ -28,15 +28,15 @@ export const symbols_company = () => {
 
 //Load full historial data (last 5 years data) of stock price
 export const getFullHistoricalData = symbol => {
-  return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/"+symbol+"?apikey=58240a5fd092ccf026ab5f57a6e67078").then(res=>res.json());
+  return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/" + symbol + "?apikey=58240a5fd092ccf026ab5f57a6e67078").then(res => res.json());
 };
 
 //Load last 5 days data of stock price
 export const getFiveDaysPrice = symbol => {
-  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_1cd7010654304d9da845c98f9e030ab8").then(res=>res.json());
+  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/5d?token=pk_1cd7010654304d9da845c98f9e030ab8").then(res => res.json());
 }
 
 //Load latest news of company
 export const getNews = symbol => {
-  return fetch("https://cloud.iexapis.com/stable/stock/"+symbol+"/news/last/5?token=pk_11795e9e241a4c278aee46443660ba6d").then(res=>res.json());
+  return fetch("https://cloud.iexapis.com/stable/stock/" + symbol + "/news/last/5?token=pk_11795e9e241a4c278aee46443660ba6d").then(res => res.json());
 }

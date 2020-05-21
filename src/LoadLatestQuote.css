@@ -91,7 +91,7 @@
 
 .button-back:hover {
   width: 20%;
-  background-color:#b3e6ff;
+  background-color: #b3e6ff;
   color: black;
   padding: 1%;
   border-radius: 10%;
@@ -133,7 +133,7 @@
 }
 
 .low {
-  color: #AD0000;
+  color: #ad0000;
 }
 
 @media screen and (max-width: 414px) {
@@ -163,7 +163,7 @@
       "Lucida Sans", Arial, sans-serif;
   }
 
-  .front > .flex-item > button:hover{
+  .front > .flex-item > button:hover {
     width: 60%;
     background-color: white;
     color: black;

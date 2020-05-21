@@ -36,7 +36,7 @@ input[type="text"] {
 
 .AutoComplete > .list-wrapper > .list-item:hover {
   text-decoration: underline;
-  color: #004FA3;
+  color: #004fa3;
 }
 
 .null_condition {
@@ -49,7 +49,7 @@ input[type="text"] {
   position: relative;
 }
 
-.error_msg{
+.error_msg {
   display: flex;
   margin-left: auto;
   margin-right: auto;
