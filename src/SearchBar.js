@@ -13,7 +13,7 @@ class SearchBar extends Component {
         super(property);
         this.state = { suggestions: [], text: '', companyNamesFromJSON: [], company_symbol_json: [], latestQuote: null, 
         companyName: "", logo_img: null, quote: null, companyprofile: null, sector_data: null, stockPrice:[],
-        fiveDayPrice:[],oneMonthPrice:[],news:[]
+        fiveDayPrice:[],oneMonthPrice:[],news:[],errorMsg:null
     };
         this.symbol = { value: "" };
         this.getStock_MainFunction = this.getStock_MainFunction.bind(this);
@@ -85,6 +85,7 @@ class SearchBar extends Component {
             this.setState({fiveDayPrice:null});
             this.setState({oneMonthPrice:null}); 
             this.setState({news:null});
+            this.setState({errorMsg:null});
         } else {
             this.getSymbolFromCompanyName(this.state.companyName);
             Promise.all([
@@ -111,6 +112,18 @@ class SearchBar extends Component {
                 return temp>=startdate;
                 }); 
                 this.setState({oneMonthPrice:oneMonthdata});
+                this.setState({errorMsg:null});
+            }).catch((e)=>{
+                console.log(e);
+                this.setState({ latestQuote: null });
+                this.setState({ logo_img: null });
+                this.setState({ quote: null });
+                this.setState({ companyprofile: null });
+                this.setState({stockPrice:null}); 
+                this.setState({fiveDayPrice:null});
+                this.setState({oneMonthPrice:null}); 
+                this.setState({news:null});
+                this.setState({errorMsg:"OOPS! Something went wrong. Please try again"});
             });
         }
     }
@@ -163,6 +176,8 @@ class SearchBar extends Component {
                     <input value={text} placeholder="Enter name of organization" onChange={this.onCompanyNameChange} type="text" aria-label="Select company name" />
                     {this.calculateSuggestions()}
                 </div>
+                {this.state.errorMsg==null?
+                <div>
                 <div className="block_latestquote" role="contentinfo">
                     {this.state.quote == null ? (this.state.sector_data == null ? <div className="null_condition" ></div> : <SectorPerformance{...this.state.sector_data} />) : <LoadLatestQuote{...this.state.quote} />}
                 </div>
@@ -176,6 +191,9 @@ class SearchBar extends Component {
                     {(this.state.stockPrice=== undefined || this.state.stockPrice===null || this.state.stockPrice.length === 0) ? <div className="null_condition"></div> : 
                     <StockChartBar stockprice={this.state.stockPrice} fiveDayPrice={this.state.fiveDayPrice} oneMonthPrice={this.state.oneMonthPrice}/>}
                 </div>
+                </div>
+                :<div className="error_msg">{this.state.errorMsg}</div>}
+
                 
             </div>
         );

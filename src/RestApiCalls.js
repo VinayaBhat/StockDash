@@ -1,5 +1,6 @@
 
 
+
 //Load the Latest Quote of the organization data
 export const loadLatestQuote = symbol => {
   return fetch("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + symbol + "&interval=5min&outputsize=full&apikey=G65K9Q9YE1T9BXFR").then(res => res.json());
@@ -7,7 +8,7 @@ export const loadLatestQuote = symbol => {
 
 //Load the company profile data
 export const getCompanyProfile = symbol => {
-  return fetch("https://financialmodelingprep.com/api/v3/company/profile/" + symbol).then(res => res.json());
+  return fetch("https://financialmodelingprep.com/api/v3/company/profile/" + symbol+"?apikey=58240a5fd092ccf026ab5f57a6e67078").then(res => res.json());
 };
 
 //Load the Company Logo
@@ -17,7 +18,7 @@ export const logo = symbol => {
 
 //Load the Sector Performance data
 export const sector_perf = () => {
-  return fetch("https://financialmodelingprep.com/api/v3/stock/sectors-performance").then(res => res.json());
+  return fetch("https://financialmodelingprep.com/api/v3/stock/sectors-performance?apikey=58240a5fd092ccf026ab5f57a6e67078").then(res => res.json());
 };
 
 //Load the symbols and company data
@@ -27,7 +28,7 @@ export const symbols_company = () => {
 
 //Load full historial data (last 5 years data) of stock price
 export const getFullHistoricalData = symbol => {
-  return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/"+symbol).then(res=>res.json());
+  return fetch("https://financialmodelingprep.com/api/v3/historical-price-full/"+symbol+"?apikey=58240a5fd092ccf026ab5f57a6e67078").then(res=>res.json());
 };
 
 //Load last 5 days data of stock price

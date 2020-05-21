@@ -23,7 +23,7 @@ const LoadLatestQuote = ({
             <div className="front" onClick={handleClick}>
                 <div className="flex-item"> <p>Latest Quote of the Organization</p></div>
                 <div className="flex-item"><img src={logo_img['url']} alt="company logo"></img></div>
-                <div className="flex-item"><button className="button-front" role="button" onClick={handleClick}>Show</button></div>
+                <div className="flex-item"><button className="button-front" onClick={handleClick}>Show</button></div>
             </div>
             <div className="back" onClick={handleClick}>
                 <Table bsPrefix="table-css" size="sm">
@@ -51,7 +51,7 @@ const LoadLatestQuote = ({
                     </tbody>
                 </Table>
                 <div className="flex-item-back">
-                    <button className="button-back" role="button" onClick={handleClick}>Back</button>
+                    <button className="button-back" onClick={handleClick}>Back</button>
                 </div>
             </div>
         </ReactCardFlip>
