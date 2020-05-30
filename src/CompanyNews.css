@@ -3,7 +3,7 @@
     max-height: 700px;
     display: flex;
     flex-direction: column;
-    background-color: rgb(238, 236, 142);
+    background-color: #eeec8e;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -23,7 +23,6 @@
   
   .section {
     margin: 3%;
-    background: lightgoldenrodyellow;
     flex-grow: 1;
     border-radius: 8px;
     display: flex;
@@ -31,22 +30,22 @@
     min-height: 0;
   }
 
-  .header-news
+  .newsHeader
   {
     font-size: 2vw;
     font-weight: bold;
     padding-top: 1%;
     padding-bottom: 1%;
     text-align: center;
-  }
+    background: #b3e6ff;
+   }
   
   .newscontent {
     margin: 10px;
-    background: #BBDEFB;
-  }
+   }
   
   .scrollable-content {
-    background: white;
+    background-color: white;
     flex-grow: 1;
     overflow: auto;
     min-height: 0;
@@ -65,6 +64,7 @@
     margin-top: 1%;
     font-family: sans-serif;
     text-decoration: underline;
+    
   }
 
   .null-check
@@ -76,6 +76,7 @@
   {
     font-family: sans-serif;
     font-size: 1vw;
+    background-color: whitesmoke;
   }
 
   .dateSource

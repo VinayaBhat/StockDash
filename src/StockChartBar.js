@@ -257,35 +257,35 @@ class StockChartBar extends Component
       <div className="searchBar">
         <Container fluid>
           <Row className="row">
-            <Col sm={1} md={1}>
-                <Button variant="5day" className="button" onClick={this.changeforFiveDays} id="fived">5d</Button>
+            <Col  md={1}>
+                <Button aria-label="5d" variant="5day" className="button" onClick={this.changeforFiveDays} id="fived">5d</Button>
             </Col>
-            <Col sm={1} md={1}>
-                <Button variant="1month" className="button" onClick={this.changeforOneMonth} id="onem">1m</Button>
+            <Col  md={1}>
+                <Button aria-label="1m" variant="1month" className="button" onClick={this.changeforOneMonth} id="onem">1m</Button>
             </Col>
-            <Col sm={1} md={1}> 
-                <Button variant="6months" className="button" onClick={this.changeforSixMonths} id="sixm">6m</Button>
+            <Col  md={1}> 
+                <Button  aria-label="6m" variant="6months" className="button" onClick={this.changeforSixMonths} id="sixm">6m</Button>
             </Col>
-            <Col sm={1} md={1}>
-                <Button variant="ytd" className="button" onClick={this.changeforYTD} id="ytd">ytd</Button>
+            <Col  md={1}>
+                <Button aria-label="ytd" variant="ytd" className="button" onClick={this.changeforYTD} id="ytd">ytd</Button>
             </Col>
-            <Col sm={1} md={1}>
-                <Button variant="1year" className="button" onClick={this.changeforOneYear} id="oney">1y</Button>
+            <Col  md={1}>
+                <Button aria-label="1y" variant="1year" className="button" onClick={this.changeforOneYear} id="oney">1y</Button>
             </Col>
-            <Col sm={1} md={1}>
-                <Button variant="2years" className="button" onClick={this.chageforTwoYear} id="twoy">2y</Button>
+            <Col  md={1}>
+                <Button aria-label="2y" variant="2years" className="button" onClick={this.chageforTwoYear} id="twoy">2y</Button>
             </Col>
-            <Col sm={1} md={1}>
-                <Button variant="5y" className="button" onClick={this.changeforFiveYears} id="fivey">5y</Button>
+            <Col  md={1}>
+                <Button aria-label="5y" variant="5y" className="button" onClick={this.changeforFiveYears} id="fivey">5y</Button>
             </Col>
-            <Col sm={1} md={1}>
-              <select defaultValue={'lineChart'} className="dropDown" onChange={this.onSelectChange}>
+            <Col   md={1}>
+              <select aria-label="charts" defaultValue={'lineChart'} className="dropDown" onChange={this.onSelectChange}>
                 <option value="lineChart">Line</option>
-                <option value="candleStickChart">CandleStick</option>
-                <option value="barChart">Bar</option>
+                <option  value="candleStickChart">CandleStick</option>
+                <option  value="barChart">Bar</option>
               </select>
             </Col>
-            <Col sm={4} md={4}>
+            <Col  md={4}>
                 <DateRangePicker 
                 startDateId="startDate"
                 endDateId="endDate"

@@ -3,16 +3,17 @@ td {
 }
 
 tr{
-  background: white;
+  background: gainsboro;
 }
 
 tr:hover
 {
-  background: lightgray;
+  background: rgb(206, 204, 204);
 }
 
 th {
-  background: wheat; 
+  background-color: gray;
+  color: white;
   padding: 8px 16px; 
 }
 
@@ -90,6 +91,7 @@ th {
     font-weight: bold;
     padding: 3%;
   }
+ 
 
   .table-css 
   {

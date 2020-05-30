@@ -24,7 +24,7 @@ class LoadStockTable extends Component
                     <button className="button-table-front" onClick={this.handleClick}>Show</button>
                 </div>
                 <div className="main-container" onClick={this.handleClick}>
-                    <div className="table-container">
+                    <div tabindex="0" className="table-container">
                         <Table bsPrefix="table-css" size="sm">
                         <thead>
                             <tr>

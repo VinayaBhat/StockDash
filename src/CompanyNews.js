@@ -25,10 +25,10 @@ class CompanyNews extends Component
             <div onClick={this.handleClick}>
                 <div className="newscontainer">
                     <div className="section">
-                        <header className="header-news">
+                        <h1 className="newsHeader">
                         {"News about " + this.props.companyName}
-                        </header>
-                        <div  className="scrollable-content newscontent">
+                        </h1>
+                        <div tabindex="0" className="scrollable-content newscontent">
                         {
                             //used news data which is passed in props from component which called company news component
                             //displaying headline,date,source and summary of news
