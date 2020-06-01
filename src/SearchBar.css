@@ -78,11 +78,14 @@ input[type="text"] {
     inset 1px 2px 0px rgba(255, 255, 255, 0.4);
 }
 
-.submit_item:hover, 
-.submit_item:focus,
-.submit_item:active{
-  border: none;
+.submit_item{
+  width: 100%;
+  text-align: left;
   background-color: white;
-  text-decoration: underline;
-  color: #004fa3;
+}
+
+.submit_item:hover,
+.submit_item:active,
+.submit_item:focus{
+  background-color:#EEEC8E;
 }
