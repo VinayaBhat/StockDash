@@ -28,7 +28,7 @@ class CompanyNews extends Component
                         <h1 className="newsHeader">
                         {"News about " + this.props.companyName}
                         </h1>
-                        <div tabindex="0" className="scrollable-content newscontent">
+                        <div tabIndex="0" className="scrollable-content newscontent">
                         {
                             //used news data which is passed in props from component which called company news component
                             //displaying headline,date,source and summary of news

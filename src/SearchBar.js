@@ -55,9 +55,9 @@ class SearchBar extends Component {
         if (suggestions.length === 0) {
             return null;
         }
-        var i = 0;
+        var i = 1;
         return (<section role="list" className="list-wrapper">
-            {suggestions.map((item) => <div role="listitem" className="list-item" key={i++} onClick={() => this.suggestionsSelected(item)}>{item}</div>)}
+            {suggestions.map((item) => <div role="listitem" tabIndex={i++} className="list-item" key={i++} onClick={() => this.suggestionsSelected(item)}><button type="submit" className="submit_item">{item}</button></div>)}
         </section>)
     }
 
