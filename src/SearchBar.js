@@ -103,7 +103,9 @@ class SearchBar extends Component {
                 let quote_temp = { ...this.state.latestQuote, logo_img: this.state.logo_img };
                 this.setState({ quote: quote_temp });
                 this.setState({ companyprofile: values[1]['profile'] });
-                this.setState({ stockPrice: values[3]['historical'] });
+                var fiveyeardata = values[3]['historical'] ;
+                fiveyeardata = fiveyeardata.reverse();
+                this.setState({ stockPrice: fiveyeardata });
                 this.setState({ fiveDayPrice: values[4] });
                 this.setState({ news: values[5] });
                 var date = new Date();
@@ -111,7 +113,7 @@ class SearchBar extends Component {
                 var oneMonthdata = values[3]['historical'].filter(function (obj) {
                     var temp = new Date(obj.date);
                     return temp >= startdate;
-                });
+                }); 
                 this.setState({ oneMonthPrice: oneMonthdata });
                 this.setState({ errorMsg: null });
             }).catch((e) => {

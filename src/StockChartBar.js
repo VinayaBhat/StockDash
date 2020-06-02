@@ -66,7 +66,7 @@ class StockChartBar extends Component
 
   //Below function is setting one month data to stockdata in state to display one month data in chart and in table when click on one month button
   //and also changing color of one month button to show it as active
-  changeforOneMonth = () => {
+  changeforOneMonth = () => { 
     this.setState({stockdata:this.props.oneMonthPrice});
     var stock=[];
     for(let i=0;i<this.props.oneMonthPrice.length;i++)
