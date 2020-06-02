@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/StockDash/static/css/main.cca316c4.chunk.css",
-    "main.js": "/StockDash/static/js/main.c067675a.chunk.js",
-    "main.js.map": "/StockDash/static/js/main.c067675a.chunk.js.map",
+    "main.js": "/StockDash/static/js/main.c60142fb.chunk.js",
+    "main.js.map": "/StockDash/static/js/main.c60142fb.chunk.js.map",
     "runtime-main.js": "/StockDash/static/js/runtime-main.a6ea3d88.js",
     "runtime-main.js.map": "/StockDash/static/js/runtime-main.a6ea3d88.js.map",
     "static/css/2.96745999.chunk.css": "/StockDash/static/css/2.96745999.chunk.css",
     "static/js/2.ba10026b.chunk.js": "/StockDash/static/js/2.ba10026b.chunk.js",
     "static/js/2.ba10026b.chunk.js.map": "/StockDash/static/js/2.ba10026b.chunk.js.map",
     "index.html": "/StockDash/index.html",
-    "precache-manifest.6d0cc453be8ad28cdd3c357732376b95.js": "/StockDash/precache-manifest.6d0cc453be8ad28cdd3c357732376b95.js",
+    "precache-manifest.730c98f54e4584d256fc0a931ca514f7.js": "/StockDash/precache-manifest.730c98f54e4584d256fc0a931ca514f7.js",
     "service-worker.js": "/StockDash/service-worker.js",
     "static/css/2.96745999.chunk.css.map": "/StockDash/static/css/2.96745999.chunk.css.map",
     "static/css/main.cca316c4.chunk.css.map": "/StockDash/static/css/main.cca316c4.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.96745999.chunk.css",
     "static/js/2.ba10026b.chunk.js",
     "static/css/main.cca316c4.chunk.css",
-    "static/js/main.c067675a.chunk.js"
+    "static/js/main.c60142fb.chunk.js"
   ]
 }
