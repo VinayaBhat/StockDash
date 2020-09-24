@@ -5,6 +5,9 @@
 This project displays the latest quote, company profile and the stocks of the organization.<br/>
 We can select the organization whose stocks price we want from a autocomplete textbox.
 
+### Project Deployed on:
+https://vinayabhat.github.io/StockDash/
+
 ### NPM Packages Used:
 - **react-chartjs-2** for Bar and line Chart
 - **react-bootstrap**
