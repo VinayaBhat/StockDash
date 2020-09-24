@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Line} from 'react-chartjs-2';
-import "./StockBarChart.css" 
+import "../CSS/StockBarChart.css" 
 
 class StockLineChart extends Component 
 {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./SearchBar.css";
+import "../CSS/SearchBar.css";
 import { loadLatestQuote, getCompanyProfile, logo, symbols_company, sector_perf, getFullHistoricalData, getFiveDaysPrice, getNews } from "./RestApiCalls";
 import constructLatestQuote from "./ConstructLatestQuote";
 import LoadLatestQuote from "./LoadLatestQuote";

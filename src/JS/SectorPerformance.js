@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import "./SectorPerformance.css"
+import "../CSS/SectorPerformance.css"
 import { Bar } from 'react-chartjs-2';
 
 //Sector Performance component to show the Daily Performance of different Sectors

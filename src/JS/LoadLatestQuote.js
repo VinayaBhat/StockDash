@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactCardFlip from "react-card-flip";
-import './LoadLatestQuote.css'
+import '../CSS/LoadLatestQuote.css'
 import { Table } from 'react-bootstrap'
 
 //Loading the latest quote of the origanization

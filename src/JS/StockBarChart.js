@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Bar} from 'react-chartjs-2';
-import "./StockBarChart.css" 
+import "../CSS/StockBarChart.css" 
 
 // defaults.global.maintainAspectRatio = false
 class StockBarChart extends Component 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./StockChartBar.css";
+import "../CSS/StockChartBar.css";
 import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';

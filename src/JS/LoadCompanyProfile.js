@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactCardFlip from "react-card-flip";
-import './LoadCompanyProfile.css'
+import '../CSS/LoadCompanyProfile.css'
 import { Row, Col, Container } from 'react-bootstrap';
 
 

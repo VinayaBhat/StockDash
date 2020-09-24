@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from 'react-bootstrap'
-import "./LoadStockTable.css";
+import "../CSS/LoadStockTable.css";
 import ReactCardFlip from "react-card-flip";
 class LoadStockTable extends Component
 {

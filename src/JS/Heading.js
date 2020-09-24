@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Heading.css';
+import '../CSS/Heading.css';
 
 function Heading() {
     return (<div className="Title">

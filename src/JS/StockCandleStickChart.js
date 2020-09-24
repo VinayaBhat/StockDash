@@ -1,6 +1,6 @@
 import React,{Component} from 'react'; 
 import ReactApexChart from "react-apexcharts";
-import "./StockBarChart.css"
+import "../CSS/StockBarChart.css"
 
 class StockCandleStickChart extends Component 
 {

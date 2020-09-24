@@ -18,7 +18,7 @@ export const logo = symbol => {
 
 //Load the Sector Performance data
 export const sector_perf = () => {
-  return fetch("https://financialmodelingprep.com/api/v3/stock/sectors-performance?apikey=6385fd4927e860fddb4b6bb67cd41fba").then(res => res.json());
+  return fetch("https://financialmodelingprep.com/api/v3/stock/sectors-performance?apikey=05c2f2c61ff790bd77cb06984d1983ef").then(res => res.json());
 };
 
 //Load the symbols and company data

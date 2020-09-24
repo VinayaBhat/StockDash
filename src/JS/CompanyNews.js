@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./CompanyNews.css";
+import "../CSS/CompanyNews.css";
 import ReactCardFlip from "react-card-flip";
 class CompanyNews extends Component
 {
